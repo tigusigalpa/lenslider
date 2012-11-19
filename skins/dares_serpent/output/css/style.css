@@ -1,0 +1,26 @@
+.ls_dar_ser_ibanner_outer{width:100%;height:300px;text-align:center;overflow-y:hidden}
+.ls_dar_ser_ibanner{position:relative;width:960px;height:300px;font-size:12px;margin:0 auto;text-align:left !important}
+.ls_dar_ser_ibanner *{margin:0;padding:0;outline:0}
+.ls_dar_ser_ibanner div{position:relative}
+.ls_dar_ser_ibanner .clear{clear:both}
+.ls_dar_ser_ibanner_banner{width:960px;height:250px;margin:25px 0;overflow:hidden;float:left}
+.ls_dar_ser_ibanner_banner p{color:#666;line-height:21px;margin:4px 0}
+.ls_dar_ser_ibanner_banner .left{float:left;width:490px;height:100%;overflow:hidden;margin-right:20px}
+.ls_dar_ser_ibanner_banner .right{float:right;width:450px;height:100%;overflow:hidden}
+.ls_dar_ser_ibanner_banner span.zag{display:block;line-height:36px;margin-bottom:5px;font-weight:200;color:#404040;font-size:36px}
+.ls_dar_ser_ibanner_banner span.uz{display:block;margin-bottom:20px;font-weight:700;color:#d33c14;font-size:14px}
+
+.ls_dar_ser_ibanner_nav{position:absolute!important;top:119px;width:31px;height:61px;z-index:99;opacity:0;-webkit-transition: all 0.2s ease-in;-moz-transition: all 0.2s ease-in;-o-transition: all 0.2s ease-in;transition: all 0.2s ease-in}
+.ls_dar_ser_ibanner_nav.left{left:-100px}
+.ls_dar_ser_ibanner_nav.right{right:-100px}
+.ls_dar_ser_ibanner_nav a{display:block;width:31px;height:61px;background:url("../images/slider-nav.png") left top no-repeat}
+.ls_dar_ser_ibanner_nav.right a{background-position:bottom right}
+.ls_dar_ser_ibanner_nav.left a:hover{background-position:right top}
+.ls_dar_ser_ibanner_nav.right a:hover{background-position:left bottom}
+
+.ls_dar_ser_ibanner_outer:hover .ls_dar_ser_ibanner_nav{opacity:1}
+.ls_dar_ser_ibanner_outer:hover .ls_dar_ser_ibanner_nav.left {left:-50px}
+.ls_dar_ser_ibanner_outer:hover .ls_dar_ser_ibanner_nav.right {right:-50px}
+
+.ls_dar_ser_wrapper{width:960px;height:250px;overflow:hidden;margin:0;padding:0}
+.ls_dar_ser_wrapper ul{margin:0;padding:0;width:10000px}

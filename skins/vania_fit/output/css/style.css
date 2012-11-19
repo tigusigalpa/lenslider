@@ -1,0 +1,17 @@
+.ls_van_fit_ibanner{position:relative;width:958px;height:250px;border:1px solid #7e7b7b;font-size:12px;text-align:left !important;font-family:Arial,Tahoma}
+.ls_van_fit_ibanner *{margin:0;padding:0;outline:0}
+.ls_van_fit_ibanner div{position:relative}
+.ls_van_fit_ibanner .clear{clear:both}
+.ls_van_fit_ibanner .ui-tabs-hide{display:none}
+.ls_van_fit_ibanner_banner{width:721px;height:100%;border-right:1px solid #928f8f;overflow:hidden}
+
+.ls_van_fit_ibanner_nav{position:absolute !important;top:0;right:0}
+.ls_van_fit_ibanner_nav .zag{display:block;font-size:16px;font-weight:bold;height:24px;overflow:hidden}
+.ls_van_fit_ibanner_nav small{font-size:10px;line-height:12px}
+.ls_van_fit_ibanner_nav li{position:relative;display:block;margin:0;width:236px;height:62px;margin-left:21px;border-bottom:1px solid #c1bebe;background:url("../images/ls-li.png") no-repeat}
+.ls_van_fit_ibanner_nav li:last-child{border:0}
+.ls_van_fit_ibanner_nav li a{display:block;color:#000;text-decoration:none;padding:8px 11px 8px 16px;width:207px;height:46px}
+.ls_van_fit_ibanner_nav li .abs{position:absolute !important;top:0;right:0;width:236px;height:63px}
+.ls_van_fit_ibanner_nav li.ui-state-active{margin:0;border:0;width:257px;background:none}
+.ls_van_fit_ibanner_nav li.ui-state-active .abs{top:-4px;right:-2px;width:243px;height:63px;padding:4px 0 3px 14px;background:url("../images/ls-li-active-abs.png") no-repeat;z-index:99}
+.ls_van_fit_ibanner_nav li.ui-state-active .abs a{color:#fff;padding:7px 5px 8px 21px;height:48px}

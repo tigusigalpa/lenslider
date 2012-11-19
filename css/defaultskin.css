@@ -1,0 +1,81 @@
+.ls_def_ibanner{
+    position:relative;
+    width:936px;
+    height:300px;
+    overflow:hidden;
+    border:1px solid #ededed;
+    padding:11px;
+    background:#fff;
+    font-size:12px;
+    text-align:left !important;
+    font-family:Arial,Tahoma;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    -khtml-border-radius:2px
+}
+.ls_def_ibanner *{
+    margin:0;
+    padding:0;
+    outline:0
+}
+.ls_def_ibanner div{position:relative}
+.ls_def_ibanner .clear{clear:both}
+.ls_def_ibanner .ui-tabs-hide{display:none}
+.ls_def_ibanner_banner{width:100%;height:100%}
+.ls_def_ibanner_banner .abs{
+    position:absolute !important;
+    bottom:0;
+    right:0;
+    font-size:12px;
+    z-index:3;
+    width:580px;
+}
+.ls_def_ibanner_banner .abs a{
+    display:inline-block;
+    float:right;
+    padding:3px 15px;
+    font-size:14px;
+    font-weight:bold;
+    background:#000;
+    text-decoration:none;
+    color:#fff;
+    -webkit-transition:all 0.3s ease-in-out;
+    -moz-transition:all 0.3s ease-in-out;
+    -o-transition:all 0.3s ease-in-out;
+    -ms-transition:all 0.3s ease-in-out;
+    transition:all 0.3s ease-in-out;
+}
+.ls_def_ibanner_banner .abs a:hover{background:#333399;text-decoration:underline}
+.ls_def_ibanner_banner .abs .desc{
+    float:right;
+    color:#bfbfbf;
+    text-shadow:0 -1px rgba(0, 0, 0, .75);
+    background:rgb(0,0,0);
+    filter:alpha(opacity=60);
+    background:rgba(0,0,0,.6);
+    overflow:hidden;
+    padding:10px 15px;
+    width:550px;
+}
+
+.ls_def_ibanner_nav{
+    position:absolute !important;
+    bottom:26px;
+    left:26px;
+    z-index:2
+}
+.ls_def_ibanner_nav li{
+    float:left;
+    display:block;
+    margin-right:5px;
+    width:20px;
+    height:20px
+}
+.ls_def_ibanner_nav li a{
+    display:block;
+    width:20px;
+    height:20px;
+    background:url("../images/cntrlbtns.png") 0 0 no-repeat
+}
+.ls_def_ibanner_nav li.ui-state-active a{background-position:0 -20px}
