@@ -139,6 +139,7 @@ class LenSlider {
     }
 
     public function lenslider_scripts_init() {
+        wp_enqueue_script('jquery');
         wp_enqueue_script('jquery-ui-core');
         wp_enqueue_script('jquery-ui-sortable');
         wp_enqueue_script('thickbox');
@@ -324,7 +325,7 @@ class LenSlider {
                     if(!empty($skinObjStatic->jsFiles) && is_array($skinObjStatic->jsFiles)) {
                         foreach ($skinObjStatic->jsFiles as $filename) {
                             $reg_name = $reg_name = str_ireplace(".js", '', basename($filename)."-{$skin_name}");
-                            wp_register_script($reg_name, str_ireplace(ABSPATH, self::$siteurl."/", $filename));
+                            wp_register_script($reg_name, str_ireplace(ABSPATH, self::$siteurl."/", $filename), array(), false, true);
                             wp_enqueue_script($reg_name);
                         }
                     }
