@@ -124,15 +124,16 @@ var lenSliderJSReady = function($, ajaxServerURL, tipsy_check, isPluginPage, con
         $slidernum   = $pre_info[1],
         $n           = $pre_info[2],
         $banner_k    = $pre_info[3];
+        console.debug("tolist="+$to_list+" name="+$name+" slidernum="+$slidernum+" n="+$n+" banner_k="+$banner_k);
         $("#blink_append_"+$slidernum+"_"+$n).html('');
-        if($to_list != 'blink_url') {
+        if($to_list != 'blink_lsurl') {
             $("#blink_append_"+$slidernum+"_"+$n).addClass('bload2');
             $("#ls_link_"+$slidernum+"_"+$n).attr("disabled", "disabled");
-        }
+        } else $("#ls_link_"+$slidernum+"_"+$n).removeAttr("disabled");
         $.post(ajaxServerURL,
             {slidernum:$slidernum,name:$name,n:$n,banner_k:$banner_k,to_list:$to_list,act:'links_variants'},
             function(data) {
-                if($to_list != 'blink_url') {
+                if($to_list != 'blink_lsurl') {
                     $("#blink_append_"+$slidernum+"_"+$n).removeClass('bload2');
                     if(data.ret != '') $("#blink_append_"+$slidernum+"_"+$n).html(data.ret);
                     else $("#blink_append_"+$slidernum+"_"+$n).html('');
@@ -254,14 +255,14 @@ var lenSliderJSReady = function($, ajaxServerURL, tipsy_check, isPluginPage, con
         $thisarr      = $(this).attr('id').replace(/mbgdel_/, '').split("_"),
         $this_id      = $thisarr[0],
         $thumb_id     = $thisarr[1],
-        $slidernum    = $thisarr[2],
-        $post_id      = $thisarr[3];
+        $slidernum    = $thisarr[2];
+        //$post_id      = $thisarr[3];
         $(".c_del, .c_thdel").hide();
         if($delThumb && $thumb_id) {
             $("#overlay_"+$thumb_id).show();
             setTimeout(function () {
                 $.post(ajaxServerURL,
-                    {attachment_id:$this_id, thumb_del:$delThumb, thumb_id:$thumb_id, slidernum:$slidernum, post_id:$post_id, act:'del_image'},
+                    {attachment_id:$this_id, thumb_del:$delThumb, thumb_id:$thumb_id, slidernum:$slidernum/*, post_id:$post_id*/, act:'del_image'},
                     function(data) {
                         if(data.del_ret == true) {
                             $(".c_del, .c_thdel").show();
@@ -287,13 +288,13 @@ var lenSliderJSReady = function($, ajaxServerURL, tipsy_check, isPluginPage, con
             var $thisarr = $(this).attr('id').replace(/mbgthdel_/, '').split("_"),
             $this_id     = $thisarr[0],
             $thumb_id    = $thisarr[1],
-            $slidernum   = $thisarr[2],
-            $post_id     = $thisarr[3];
+            $slidernum   = $thisarr[2];
+            //$post_id     = $thisarr[3];
             $(".c_del, .c_thdel").hide();
             $("#overlay_"+$thumb_id).show();
             setTimeout(function () {
                 $.post(ajaxServerURL,
-                    {attachment_id:$this_id, thumb_id:$thumb_id, slidernum:$slidernum, post_id:$post_id, act:'del_thumb'},
+                    {attachment_id:$this_id, thumb_id:$thumb_id, slidernum:$slidernum/*, post_id:$post_id*/, act:'del_thumb'},
                     function(data) {
                         if(data.del_ret == true) {
                             $(".c_del, .c_thdel").show();
@@ -419,6 +420,7 @@ var lenSliderJSReady = function($, ajaxServerURL, tipsy_check, isPluginPage, con
             function(data) {
                 if(count_banners <= data.banners_limit && data.banner_item != false) {
                     if(removeEl) removeEl.removeClass("bload");
+                    //console.debug(data.banner_item);
                     $('#slidernum_'+slidernum).append($(data.banner_item).fadeIn('slow'));
                     scrollToAnchor('anchor_'+slidernum+count_banners);
                 } else if(removeEl) removeEl.removeClass("bload");

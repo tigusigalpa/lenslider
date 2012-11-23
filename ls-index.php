@@ -4,7 +4,7 @@ Plugin Name: LenSlider
 Plugin URI: http://www.lenslider.com/
 Description: This plugin allows you easy to generate multiple visual sliders as well as easy to integrate them into any place of your site via slider php-code or shortcode (plugin timyMCE button). A lot of plugin slider skins will help you to visualize your slider.
 Author: Igor Sazonov
-Version: 1.0
+Version: 1.0.1
 Author URI: http://www.lenslider.com/about-author/
 License: GPLv2
 

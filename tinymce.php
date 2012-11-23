@@ -9,7 +9,7 @@
 <script type="text/javascript" src="<?=$site_url?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
 <script type="text/javascript" src="<?=$site_url?>/wp-includes/js/tinymce/utils/validate.js"></script>
 <script type="text/javascript" src="<?=$site_url?>/wp-includes/js/tinymce/utils/editable_selects.js"></script>
-<script type="text/javascript" src="<?=$site_url?>/wp-content/plugins/lenslider/js/tinymce_local.js"></script>
+<script type="text/javascript" src="<?=$site_url?>/wp-content/plugins/len-slider/js/tinymce_local.js"></script>
 </head>
 <body>
     <form onsubmit="LenSliderDialog.insert(LenSliderDialog.local_ed);return false;" action="#">

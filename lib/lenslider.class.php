@@ -2,7 +2,7 @@
 class LenSlider {
     static $settingsOption         = 'lenslider_settings';
     static $postsSliders           = 'lenslider_post_sliders';
-    public $indexPage              = 'lenslider/ls-index.php';
+    public $indexPage              = 'len-slider/ls-index.php';
     public $settingsPage           = 'lenslider-settings-page';
     public $skinsPage              = 'lenslider-skins-page';
     public $indexFile;
@@ -48,7 +48,7 @@ class LenSlider {
 
     protected $_requestSettingsURI;
     protected $_requestSkinsURI;
-    protected static $_pluginName  = 'lenslider';
+    protected static $_pluginName  = 'len-slider';
     
     private static $_settingsTitle = 'settings';
     private static $_bannersOption = 'lenslider_banners';
@@ -101,7 +101,7 @@ class LenSlider {
         add_action('admin_init',          array(&$this, 'lenslider_scripts_init'));
         add_action('admin_menu',          array(&$this, 'lenslider_menu_add'));
         add_action('admin_head',          array(&$this, 'lenslider_admin_head'));
-        add_action('wp_head',             array(&$this, 'lenslider_make_skins_files_wp_head'));
+        add_action('init',             array(&$this, 'lenslider_make_skins_files_wp_head'));
         add_action('wp_footer',           array(&$this, 'lenslider_footer_link'));
         add_action('save_post',           array(&$this, 'lenslider_save_postdata'));
         add_action('save_post',           array(&$this, 'lenslider_check_post_url_update'));
@@ -325,7 +325,7 @@ class LenSlider {
                     if(!empty($skinObjStatic->jsFiles) && is_array($skinObjStatic->jsFiles)) {
                         foreach ($skinObjStatic->jsFiles as $filename) {
                             $reg_name = $reg_name = str_ireplace(".js", '', basename($filename)."-{$skin_name}");
-                            wp_register_script($reg_name, str_ireplace(ABSPATH, self::$siteurl."/", $filename), array(), false, true);
+                            wp_register_script($reg_name, str_ireplace(ABSPATH, self::$siteurl."/", $filename), array('jquery', 'jquery-ui-core', 'jquery-ui-tabs'), false, true);
                             wp_enqueue_script($reg_name);
                         }
                     }
@@ -1150,7 +1150,7 @@ class LenSlider {
     //if(!$attachment_id) => new banner
     private function _lenslider_link_variants($slidernum, $n, $title, $attachment_id = false, $check = false, $url_type_id = false) {
         $array = array(
-            'ls_url' => __('Url', 'lenslider'),
+            'lsurl'  => __('Url', 'lenslider'),
             'post'   => __('Post', 'lenslider'),
             'page'   => __('Page', 'lenslider'),
             'cat'    => __('Category', 'lenslider')
@@ -1365,7 +1365,7 @@ class LenSlider {
     }
     
     //if $attachment_id == 0 => new banner
-    public function lenslider_banner_item($n, $slidernum, $banners_limit, $array_merge = false, $array_unset = false, $has_thumb = false, $url_type = 'ls_url', $url_type_id = false, $array = false, $sizes_array = false, $img = false, $attachment_id = 0, $img_thumb = false, $attachment_thumb_id = 0) {
+    public function lenslider_banner_item($n, $slidernum, $banners_limit, $array_merge = false, $array_unset = false, $has_thumb = false, $url_type = 'lsurl', $url_type_id = false, $array = false, $sizes_array = false, $img = false, $attachment_id = 0, $img_thumb = false, $attachment_thumb_id = 0) {
         $nn=$n+1;
         
         $img = ($img)?self::$siteurl.$img:false;
@@ -1377,10 +1377,10 @@ class LenSlider {
             <li class=\"postbox bitem bitem_{$slidernum}";if(@$_COOKIE["folding_{$slidernum}"] == 'svernuto') $ret .= " min";$ret .= "\" id=\"bitem_{$attachment_id}\">
                 <input type=\"hidden\" name=\"bannerhidden[{$slidernum}][]\" />
                 <div id=\"anchor_{$slidernum}{$n}\"></div>
-                <div id=\"post_hidden_uth_ls_link_{$slidernum}_{$n}\">".self::lenslider_banner_hidden($slidernum, 'url_type', $url_type)."</div><div id=\"post_hidden_ls_link_{$slidernum}_{$n}\">";
-                if($url_type != 'ls_url' && !empty($array) && is_array($array) && !empty($array['ls_link']['value'])) $ret .= self::lenslider_banner_hidden($slidernum, 'ls_link', $array['ls_link']['value']);
-                $ret .= "</div><div id=\"url_type_id_{$slidernum}_{$n}\">";
-                if($url_type != 'ls_url' && !empty($array) && is_array($array) && !empty($array['ls_link']['value'])) $ret .= self::lenslider_banner_hidden($slidernum, 'url_type_id', $url_type_id);
+                <div id=\"post_hidden_uth_ls_link_{$slidernum}_{$n}\">".self::lenslider_banner_hidden($slidernum, 'url_type', $url_type)."</div><!--div id=\"post_hidden_ls_link_{$slidernum}_{$n}\">";
+                //if($url_type != 'lsurl' && !empty($array) && is_array($array) && !empty($array['ls_link']['value'])) $ret .= self::lenslider_banner_hidden($slidernum, 'ls_link', $array['ls_link']['value']);
+                $ret .= "</div--><div id=\"url_type_id_{$slidernum}_{$n}\">";
+                if($url_type != 'lsurl' && !empty($array) && is_array($array) && !empty($array['ls_link']['value'])) $ret .= self::lenslider_banner_hidden($slidernum, 'url_type_id', $url_type_id);
                 $ret .= "
                 </div><div class=\"ls_slide_image_inner_overlay\" id=\"boverlay_{$attachment_id}\" style=\"display:none;\"></div>";
                 if($attachment_id) $ret .= "<div class=\"handlediv atipsy\" title=\"".sprintf(__("Banner %d expand / collapse", 'lenslider'), $nn)."\"><a href=\"javascript:;\"></a></div>

@@ -3,7 +3,7 @@ Contributors: tigusigalpa
 Tags: slider, carousel, slideshow, banners, video slider, image slider, image slider plugin, javascript rotator, javascript slider, jquery rotator, photo rotator, Photo Slider, picture slider, rotator, shortcode, slider plugin, slideshow plugin, slider shortcode, carousel plugin, thumbnails, css3, css
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,7 +41,7 @@ LenSlider is a WordPress plugin for creation of visual sliders, carousels or sli
 PHP-code:
 `<?php if( class_exists( 'LenSlider' ) ) {LenSlider::lenslider_output_slider( $id );} ?>`
 or
-`vif( class_exists( 'LenSlider' ) ) {echo LenSlider::lenslider_output_slider( $id, false );} ?>`
+`<?php if( class_exists( 'LenSlider' ) ) {echo LenSlider::lenslider_output_slider( $id, false );} ?>`
 or by Shortcode button:
 `[lenslider id=""]`
 
@@ -68,14 +68,13 @@ or by Shortcode button:
 * Widget support
 * HTML-editor support
 * Some wonderful but secret yet plans
-* if you have idea(s) to improve LenSlider, you are welcome to [suggest your idea](http://www.lenslider.com/suggest-idea/)
 
 == Installation ==
 
-1. Search for "LenSlider" in the Add New Plugin section of your WordPress site admin panel or manually upload the `lenslider` folder (unziped) to the `/wp-content/plugins/` directory
+1. Search for "Len Slider" in the Add New Plugin section of your WordPress site admin panel or manually upload the `len-slider` folder (unziped) to the `/wp-content/plugins/` directory
 2. Activate the plugin
 3. Create Sliders under the new **LenSlider** Menu
-4. Use the shortcode `[lenslider]` (shortode button is already installed on your WYSIWYG bar) in the content area of a page or post where you want the image slider to appear or PHP code `if( class_exists( 'LenSlider' ) ) {LenSlider::lenslider_output_slider( $id );}` in your template files
+4. Use the shortcode `[lenslider]` (shortode button is already installed on your WYSIWYG bar) in the content area of a page or post where you want the image slider to appear or PHP code `<?php if( class_exists( 'LenSlider' ) ) {LenSlider::lenslider_output_slider( 'your slider hash ID here - with lower(!) case letters' );}?>` in your template files
 5. Enjoy!
 
 
@@ -87,13 +86,13 @@ Yes, this is right. Activate the slider with help of radiobuttons and save the d
 
 = What does "maximum width of uploaded image, px" mean? =
 
-Each banner of the slider has some image/photo and it has maximal (recommended) width in pixels (usually on websites width dominates over height). This figure limits the width of the image that you download, i.e. if the image is wider, then it will be automatically resized to the required width with preserved ratio. In case the width is equal to the maximal possible parameter or smaller than that, then the image will not change. One can set any figure in the range 30-120 pixels.
+Each banner of the slider has some image/photo and it has maximal (recommended) width in pixels (usually on websites width dominates over height). This figure limits the width of the image that you download, i.e. if the image is wider, then it will be automatically resized to the required width with preserved ratio. In case the width is equal to the maximal possible parameter or smaller than that, then the image will not change. One can set any figure in the range 30-1200 pixels.
 
 = How can I insert necessary slider with shortcode if I do not remember its hash-number? =
 
 If you have installed plugin, then the button LenSlider should appear in the admin panel in the section of adding new post/page/custom post type in the bar WYSIWYG of the editor. Press this button and you will understand how it works.
 
-= What does "Maximal quality of uploaded image" mean?=
+= What does "Maximal quality of uploaded image" mean? =
 
 The default parameter is 90. That means that the image that you download will lose in quality a little, but its weight in kilobytes will be lower and this will increase download speed of a page with a slider. In other words, this is a small contribution to download speed in client’s area. You can change this figure from 60 to 100.
 
@@ -120,3 +119,10 @@ If you switch on this option hints in the admin LenSlider will be shown in nice 
 == Changelog ==
 
 = 1.0.0 =
+First version
+
+= 1.0.1 =
+Fixed much of bugs:
+* Double links
+* `default` skin link replaced
+* some js admin errors
