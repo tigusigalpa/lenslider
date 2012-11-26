@@ -23,7 +23,7 @@ class LenSlider {
     
     static $defaultSkinWidth       = 936;
 
-    static $version                = '1.0';
+    static $version                = '1.1.1';
     static $maxWidthName           = 'ls_images_maxwidth';
     static $maxSizeName            = 'ls_images_maxsize';
     static $slidersLimitName       = 'ls_sliders_limit';
@@ -101,7 +101,7 @@ class LenSlider {
         add_action('admin_init',          array(&$this, 'lenslider_scripts_init'));
         add_action('admin_menu',          array(&$this, 'lenslider_menu_add'));
         add_action('admin_head',          array(&$this, 'lenslider_admin_head'));
-        add_action('init',             array(&$this, 'lenslider_make_skins_files_wp_head'));
+        add_action('init',                array(&$this, 'lenslider_make_skins_files_wp_head'));
         add_action('wp_footer',           array(&$this, 'lenslider_footer_link'));
         add_action('save_post',           array(&$this, 'lenslider_save_postdata'));
         add_action('save_post',           array(&$this, 'lenslider_check_post_url_update'));
@@ -115,10 +115,13 @@ class LenSlider {
     public function lenslider_register_activation_hook() {
         add_option(self::$_bannersOption);
         add_option(self::$settingsOption, self::$_settingsDefault);
-        add_option(self::$postsSliders);
+        //add_option(self::$postsSliders);
         add_role(self::$_role, self::$_roleName, array(self::$_capability));
         $role = get_role('administrator');
         $role->add_cap(self::$_capability);
+        $this->_leslider_check_unused_skins_to_default();
+        $skins_custom_catalog = WP_CONTENT_DIR."/".LenSliderSkins::$skinsCustomCatalog;
+        if(!file_exists($skins_custom_catalog)) wp_mkdir_p($skins_custom_catalog);
     }
 
     public static function lenslider_plugin_deactivate() {
@@ -134,6 +137,9 @@ class LenSlider {
         }
         delete_option(self::$_bannersOption);
         delete_option(self::$settingsOption);
+        @delete_option(self::$postsSliders);
+        $skins_custom_catalog = WP_CONTENT_DIR."/".LenSliderSkins::$skinsCustomCatalog;
+        if(!file_exists($skins_custom_catalog)) self::_lenslider_delete_dir($skins_custom_catalog);
         remove_action('lenslider_banners_processing', array(&$this, 'lenslider_banners_processing'));
         self::lenslider_plugin_deactivate();
     }
@@ -316,7 +322,7 @@ class LenSlider {
                             wp_enqueue_style($reg_name);
                         }
                     }
-                    $default_js_array = LenSliderSkins::_lenslider_skin_default_js_scripts_array($skin_name);
+                    $default_js_array = (LenSliderSkins::_lenslider_skin_default_js_scripts_array($skin_name))?LenSliderSkins::_lenslider_skin_default_js_scripts_array($skin_name):false;
                     if(!empty($default_js_array) && is_array($default_js_array)) {
                         foreach ($default_js_array as $jsHandle) {
                             wp_enqueue_script($jsHandle);
@@ -330,7 +336,7 @@ class LenSlider {
                         }
                     }
                     $skinObj = self::lenslider_get_slider_skin_object($skin_name);
-                    if(!empty($skinObj->_jsHead)) echo $skinObj->_jsHead;
+                    if($skinObj && !empty($skinObj->_jsHead)) echo $skinObj->_jsHead;
                 }
             }
         }
@@ -346,7 +352,7 @@ class LenSlider {
     public function lenslider_admin_head() {
         echo "<script type=\"text/javascript\">
                 jQuery(document).ready(function($) {
-                    $(this).load(lenSliderJSReady($, \"{$this->_ajaxURL}\", {$this->_tipsy}, ".$this->_lenslider_is_plugin_page().", \"".__("Are you sure?", 'lenslider')."\", \"".__("You also want to delete thumbnail for this banner?", 'lenslider')."\", \"".__("No skins available", 'lenslider')."\", \"".__('slider comment', 'lenslider')."\", \"".__("Errors", 'lenslider')."\", \"".__("If  there are errors while filling fields, then check the fields marked with red border.", 'lenslider')."\", \"".__("Maximize", 'lenslider')."\", \"".__("Minimize", 'lenslider')."\", \"".__("Do you want to set skin settings for the slider?", 'lenslider')."\", \"".__("Slider #{%torep%} errors:", 'lenslider')."\", \"".__("Banner {%torep%} errors:", 'lenslider')."\"));
+                    $(this).load(lenSliderJSReady($, \"{$this->_ajaxURL}\", {$this->_tipsy}, ".$this->_lenslider_is_plugin_page().", \"".__("Are you sure?", 'lenslider')."\", \"".__("You also want to delete thumbnail for this banner?", 'lenslider')."\", \"".__("No skins available", 'lenslider')."\", \"".__('slider comment', 'lenslider')."\", \"".__("Errors", 'lenslider')."\", \"".__("If  there are errors while filling fields, then check the fields marked with red border.", 'lenslider')."\", \"".__("Maximize", 'lenslider')."\", \"".__("Minimize", 'lenslider')."\", \"".__("Do you want to set skin settings for the slider?", 'lenslider')."\", ".json_encode($this->lenslider_allowed_url_strs()).", \"".__("Slider #{%torep%} errors:", 'lenslider')."\", \"".__("Banner {%torep%} errors:", 'lenslider')."\"));
                 })(jQuery);
             </script>\n";
     }
@@ -371,6 +377,23 @@ class LenSlider {
         $plugin_array[self::$_pluginName] = plugins_url('js/tinymce.js', $this->indexFile);
         return $plugin_array;
     }
+    
+    public function lenslider_allowed_url_strs() {
+        return array('#', 'javascript:;');
+    }
+    
+    private function _leslider_check_unused_skins_to_default() {
+        $sliders_array = self::lenslider_get_array_from_wp_options(self::$_bannersOption);
+        if(!empty($sliders_array) && is_array($sliders_array)) {
+            foreach (array_keys($sliders_array) as $slidernum) {
+                $slider_settings = self::lenslider_get_slider_settings($slidernum);
+                if(!in_array($slider_settings[self::$skinName], LenSliderSkins::lenslider_skins_folders_array())) $slider_settings[self::$skinName] = self::$defaultSkin;
+                $sliders_array[$slidernum][self::$_settingsTitle] = $slider_settings;
+            }
+            $this->_lenslider_update_lenslider_option(self::$_bannersOption, $sliders_array);
+        }
+        return true;
+    }
     /*---------------/INITS METHODS---------------*/
     
     
@@ -387,8 +410,8 @@ class LenSlider {
         if($att_id) {
             $retObj            = new stdClass;
             $retObj->absAttUrl = str_ireplace(self::$siteurl."/", ABSPATH, wp_get_attachment_url($att_id));
-            $retObj->httpPath  = str_ireplace(ABSPATH, '/', &$retObj->absAttUrl);
-            $size_array        = @getimagesize(&$retObj->absAttUrl);
+            $retObj->httpPath  = str_ireplace(ABSPATH, '/', $retObj->absAttUrl);
+            $size_array        = @getimagesize($retObj->absAttUrl);
             $retObj->size      = $this->lenslider_size_str($size_array[0], $size_array[1]);
             $retObj->mime      = $size_array['mime'];
             return $retObj;
@@ -490,8 +513,7 @@ class LenSlider {
     }
 
     public function lenslider_is_valid_url($data) {
-        return preg_match("/^((http|https):\/\/)?([a-z0-9\-]+\.)?[a-z0-9\-]+\.[a-z0-9]{2,4}(\.[a-z0-9]{2,4})?(\/.*)?$/i", $data);
-        return true;
+        return (preg_match("/^((http|https):\/\/)?([a-z0-9\-]+\.)?([a-z0-9\-]+\.)?[a-z0-9\-]+\.[a-z0-9]{2,4}(\.[a-z0-9]{2,4})?(\/.*)?$/i", $data) || in_array($data, $this->lenslider_allowed_url_strs()))?true:false;
     }
     
     private static function _lenslider_is_slider_exists($slidernum) {
@@ -541,7 +563,7 @@ class LenSlider {
     private function _lenslider_skin_has_settings($skin_name) {
         if($skin_name != self::$defaultSkin) {
             $skinObj = self::lenslider_get_slider_skin_object($skin_name);
-            if(!empty($skinObj->_sliderMergeSettingsArray) && is_array($skinObj->_sliderMergeSettingsArray)) {
+            if($skinObj && !empty($skinObj->_sliderMergeSettingsArray) && is_array($skinObj->_sliderMergeSettingsArray)) {
                 foreach ($skinObj->_sliderMergeSettingsArray as $k=>$arr) {
                     if(array_key_exists('value', $arr)) return true;
                 }
@@ -568,7 +590,7 @@ class LenSlider {
         $merge_array = array();
         if($skin_name != self::$defaultSkin) {
             $skinObj = self::lenslider_get_slider_skin_object($skin_name);
-            $merge_array = $skinObj->_sliderMergeSettingsArray;
+            $merge_array = ($skinObj)?$skinObj->_sliderMergeSettingsArray:array();
         } else $merge_array = self::_lenslider_get_default_skin_settings();
         if(!empty($merge_array) && is_array($merge_array)) {
             foreach ($merge_array as $k=>$arr) {
@@ -595,9 +617,13 @@ class LenSlider {
     
     public static function lenslider_get_slider_skin_object($skin_name, $require = true) {
         if($skin_name != self::$defaultSkin) {
-            if($require) require_once(LenSliderSkins::_lenslider_skins_abspath()."/{$skin_name}/lib/{$skin_name}.skin.class.php");
-            $class = ucfirst($skin_name)."LenSliderSkin";
-            return new $class;
+            $require_path = LenSliderSkins::_lenslider_skins_abspath()."/{$skin_name}/lib/{$skin_name}.skin.class.php";
+            if(file_exists($require_path)) {
+                if($require) require_once(LenSliderSkins::_lenslider_skins_abspath()."/{$skin_name}/lib/{$skin_name}.skin.class.php");
+                $class = ucfirst($skin_name)."LenSliderSkin";
+                return new $class;
+            }
+            return false;
         }
         return false;
     }
@@ -649,7 +675,7 @@ class LenSlider {
     public function lenslider_get_slider_banner_fields($slidernum) {
         $skin_name = $this->_lenslider_get_slider_skin_name($slidernum);
         $skinObj = self::lenslider_get_slider_skin_object($skin_name);
-        return $this->_lenslider_make_fields_array($this->_lenslider_make_default_fields_array(), $skinObj->bannerUnsetArray, $skinObj->bannerMergeArray);
+        return ($skinObj)?$this->_lenslider_make_fields_array($this->_lenslider_make_default_fields_array(), $skinObj->bannerUnsetArray, $skinObj->bannerMergeArray):false;
     }
     
     private static function _lenslider_get_option($option_name) {
@@ -750,7 +776,20 @@ class LenSlider {
         }
         return $this->_lenslider_update_option_sliders_array($sliders_array);
     }
-
+    
+    protected static function _lenslider_delete_dir($dir) {
+        if(!file_exists($dir)) return true;
+        if(!is_dir($dir) || is_link($dir)) return unlink($dir);
+        foreach (scandir($dir) as $item) {
+            if($item == '.' || $item == '..') continue;
+            if(!self::_lenslider_delete_dir($dir . "/" . $item)) {
+                chmod($dir . "/" . $item, 0777);
+                if(!self::_lenslider_delete_dir($dir . "/" . $item)) return false;
+            }
+        }
+        return rmdir($dir);
+    }
+    
     private static function _lenslider_delete_slider_banners_ids($slidernum, $sliders_array = false) {
         if(!$sliders_array) $sliders_array = self::lenslider_get_array_from_wp_options(self::$_bannersOption);
         if(!empty($sliders_array[$slidernum]) && is_array($sliders_array[$slidernum])) {
@@ -914,7 +953,7 @@ class LenSlider {
                     $has_thumb     = (!empty($settings_post_array[$slider_k][self::$hasThumb])       && $settings_post_array[$slider_k][self::$hasThumb] == 'on')?1:0;
                     $maxthumbwidth = (!empty($settings_post_array[$slider_k][self::$thumbMaxWidth]))   ?$settings_post_array[$slider_k][self::$thumbMaxWidth]   :$this->thumbWidthMAX;
                     if(!LenSliderSkins::_lenslider_skin_exists($skin_name)) $skin_name = self::$defaultSkin;
-                    if(!empty($slider_settings_array) && $slider_settings_array[self::$skinName] != $skin_name) $disen = 0;
+                    //if(!empty($slider_settings_array)/* && $slider_settings_array[self::$skinName] != $skin_name*/) $disen = 0;
                     if(array_key_exists("ls_link", $array[$slider_k]) && $this->lenslider_is_valid_url($array[$slider_k]["ls_link"][$banner_k])) {
                         if(!empty($file['tmp_name'][$slider_k][$banner_k])) {
                             $afile              = array();
@@ -939,12 +978,14 @@ class LenSlider {
                                 }
                             }
                         } else {
-                            $id         = $array[$slider_k]['ls_att_id'][$banner_k];
-                            $rauObj     = $this->lenslider_replace_att_url($id);
-                            $image_path = $rauObj->httpPath;
-                            $image_size = $rauObj->size;
-                            $attachment = wp_generate_attachment_metadata($id, $rauObj->absAttUrl);
-                            $this->_lenslider_update_attachment($id, $attachment, true);
+                            $id             = $array[$slider_k]['ls_att_id'][$banner_k];
+                            if($id) {
+                                $rauObj     = $this->lenslider_replace_att_url($id);
+                                $image_path = $rauObj->httpPath;
+                                $image_size = $rauObj->size;
+                                $attachment = wp_generate_attachment_metadata($id, $rauObj->absAttUrl);
+                                $this->_lenslider_update_attachment($id, $attachment, true);
+                            }
                         }
                         /*THUMBS*/
                         if($has_thumb && !empty($maxthumbwidth) && intval($maxthumbwidth) >= $this->thumbWidthMIN && intval($maxthumbwidth) <= $this->thumbWidthMAX) {
@@ -1326,20 +1367,25 @@ class LenSlider {
                             $array_merge  = LenSliderSkins::_lenslider_skin_merge_array($skinObj->bannerMergeArray, $banner_array);
                             $array_unset  = $skinObj->bannerUnsetArray;
                         }
-                        $return .= $this->lenslider_banner_item($n, $slidernum, $this->bannersLimit, &$array_merge, &$array_unset, $sliders_array[$slidernum][self::$_settingsTitle]['ls_has_thumb'], $banner_array['url_type'], $banner_array['url_type_id'], $this->_lenslider_make_default_fields_array($banner_array), array(&$banner_array['size'], &$banner_array['size_thumb']), &$banner_array['path'], $k, &$banner_array['path_thumb'], &$banner_array['thumb_id']);
+                        $return .= $this->lenslider_banner_item($n, $slidernum, $this->bannersLimit, $array_merge, $array_unset, $sliders_array[$slidernum][self::$_settingsTitle]['ls_has_thumb'], $banner_array['url_type'], $banner_array['url_type_id'], $this->_lenslider_make_default_fields_array($banner_array), array($banner_array['size'], $banner_array['size_thumb']), $banner_array['path'], $k, $banner_array['path_thumb'], $banner_array['thumb_id']);
                         $n++;
                     }
                 }
-            } else $return .= $this->lenslider_banner_item($slidernum, $slidernum, $this->bannersLimit, &$array_merge, &$array_unset, $sliders_array[$slidernum][self::$_settingsTitle]['ls_has_thumb'], $banner_array['url_type'], $banner_array['url_type_id']);
-        } else $return = $this->lenslider_banner_item(0, $slidernum, $this->bannersLimit, &$array_merge, &$array_unset, false, $banner_array['url_type'], $banner_array['url_type_id']);
+            } else $return .= $this->lenslider_banner_item($slidernum, $slidernum, $this->bannersLimit, $array_merge, $array_unset, $sliders_array[$slidernum][self::$_settingsTitle]['ls_has_thumb'], $banner_array['url_type'], $banner_array['url_type_id']);
+        } else $return = $this->lenslider_banner_item(0, $slidernum, $this->bannersLimit, $array_merge, $array_unset, false, $banner_array['url_type'], $banner_array['url_type_id']);
         return $return;
     }
 
     public static function lenslider_output_slider($slidernum, $echo = true, $check_enable = true) {
+        $slidernum = strtolower($slidernum);
         if(($check_enable && self::lenslider_is_enabled_slider($slidernum)) || !$check_enable) {
             $skin_name      = self::_lenslider_get_slider_skin_name($slidernum);
             $slider_banners = self::lenslider_get_slider_banners($slidernum);
-            $file_text = ($skin_name != self::$defaultSkin)?file_get_contents(LenSliderSkins::_lenslider_skins_abspath()."/".self::_lenslider_get_slider_skin_name($slidernum)."/output/output.html"):file_get_contents(LenSliderSkins::_lenslider_skins_abspath()."/default.html");
+            if(file_exists(LenSliderSkins::_lenslider_skins_abspath()."/".self::_lenslider_get_slider_skin_name($slidernum)."/output/output.html")) {
+                $file_text = ($skin_name != self::$defaultSkin)?file_get_contents(LenSliderSkins::_lenslider_skins_abspath()."/".self::_lenslider_get_slider_skin_name($slidernum)."/output/output.html"):file_get_contents(LenSliderSkins::_lenslider_skins_abspath()."/default.html");
+            } else {
+                $file_text = ($skin_name != self::$defaultSkin)?file_get_contents(LenSliderSkins::_lenslider_skins_custom_abspath()."/".self::_lenslider_get_slider_skin_name($slidernum)."/output/output.html"):file_get_contents(LenSliderSkins::_lenslider_skins_abspath()."/default.html");
+            }
             if(!empty($file_text)) {
                 if(!empty($slider_banners) && is_array($slider_banners)) {
                     $slider_settings = self::lenslider_get_slider_settings($slidernum);
@@ -1500,16 +1546,22 @@ class LenSlider {
                                 <span class=\"ls_sep\"></span>
                             </div>
                             <div class=\"ls_title_comment ls_floatleft\">
-                                <input type=\"text\" maxlength=\"60\" name=\"slset[{$n_slider}][".self::$sliderComment."]\" id=\"".self::$sliderComment."_{$n_slider}\" value=\"";
+                                <input type=\"text\" maxlength=\"60\" style=\"margin:3px 10px 0 0\" name=\"slset[{$n_slider}][".self::$sliderComment."]\" id=\"".self::$sliderComment."_{$n_slider}\" value=\"";
                                 $ret .= (!empty($settings_array[self::$sliderComment]))?$settings_array[self::$sliderComment]:__('slider comment', 'lenslider');
                                 $ret .= "\" ";
                                 if(empty($settings_array[self::$sliderComment])) $ret .= "class=\"ls_input prevent\" ";
                                 $ret .= "/>
                             </div>
+                            <div class=\"ls_floatleft\">
+                                <input type=\"checkbox\" style=\"margin:6px 5px 0 0\" name=\"slset[{$n_slider}][".self::$sliderRandom."]\" id=\"".self::$sliderRandom."_{$n_slider}\"";
+                                if(!empty($settings_array[self::$sliderRandom])) $ret .= " checked=\"checked\"";
+                                $ret .= " /><label style=\"display:inline-block;margin-top:6px\" for=\"".self::$sliderRandom."_{$n_slider}\">".__('Random', 'lenslider')."</label>
+                            </div>
                             <div class=\"ls_floatright\">
                                 <ul class=\"utm_ul\">
-                                    <!--li class=\"r\"><a class=\"ls_minibutton\" href=\"#\"><span class=\"rolldown\">".__('Quick info', 'lenslider')."</span></a></li-->
-                                    <li class=\"r\"><a class=\"ls_minibutton thickbox\" title=\"".sprintf(__("Slider #%s preview", 'lenslider'), $n_slider)."\" href=\"".plugins_url('ls-preview.php', $this->indexFile)."?slidernum={$n_slider}&keepThis=true&TB_iframe=true&height=600&width=1000\"><span class=\"export\">".__('Preview', 'lenslider')."</span></a></li>
+                                    <!--li class=\"r\"><a class=\"ls_minibutton\" href=\"#\"><span class=\"rolldown\">".__('Quick info', 'lenslider')."</span></a></li-->";
+                                    if(!$new_slider) $ret.="<li class=\"r\"><a class=\"ls_minibutton thickbox\" title=\"".sprintf(__("Slider #%s preview", 'lenslider'), $n_slider)."\" href=\"".plugins_url('ls-preview.php', $this->indexFile)."?slidernum={$n_slider}&keepThis=true&TB_iframe=true&height=600&width=1000\"><span class=\"export\">".__('Preview', 'lenslider')."</span></a></li>";
+                                    $ret.="
                                 </ul><div class=\"clear\"></div>
                             </div><!--ls_floatright-->
                             <div class=\"clear\"></div>
@@ -1551,12 +1603,12 @@ class LenSlider {
         $sliders_array = self::lenslider_get_array_from_wp_options(self::$_bannersOption);
         if(!empty($sliders_array) && is_array($sliders_array)) {
             $ret .= "<ul class=\"sliders_nav\">";
-                    foreach (array_keys($sliders_array) as $k) {
-                        $slider_settings_array = self::lenslider_get_slider_settings($k);
-                        $ret .= "<li";
+                    foreach (array_keys($sliders_array) as $slidernum) {
+                        $slider_settings_array = self::lenslider_get_slider_settings($slidernum);
+                        $ret .= "<li id=\"sliders_nav_li_{$slidernum}\"";
                         if($slider_settings_array[self::$sliderDisenName] == 0) $ret .= " class=\"dis\"";
-                        $ret .= "><a href=\"#slider_metabox_{$k}\">";
-                        $ret .= (!empty($slider_settings_array[self::$sliderComment]))?sprintf(__("Slider <u>#%s</u><br />(<em>{$slider_settings_array[self::$sliderComment]}</em>)", 'lenslider'), $k):sprintf(__("Slider <u>#%s</u>", 'lenslider'), $k);
+                        $ret .= "><a href=\"#slider_metabox_{$slidernum}\">";
+                        $ret .= (!empty($slider_settings_array[self::$sliderComment]))?sprintf(__("Slider <u>#%s</u><br />(<em>{$slider_settings_array[self::$sliderComment]}</em>)", 'lenslider'), $slidernum):sprintf(__("Slider <u>#%s</u>", 'lenslider'), $slidernum);
                         $ret .= "</a></li>";
                     }
             $ret .= "</ul>";

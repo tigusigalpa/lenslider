@@ -109,7 +109,7 @@ if($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
                     break;
                 default :
                     $ret_array['ret'] = '';
-                    $ret_array['uth'] = LenSlider::lenslider_banner_hidden($slidernum, 'url_type', 'ls_simple');
+                    $ret_array['uth'] = LenSlider::lenslider_banner_hidden($slidernum, 'url_type', 'lsurl');
             }
             break;
         

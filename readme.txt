@@ -3,7 +3,7 @@ Contributors: tigusigalpa
 Tags: slider, carousel, slideshow, banners, video slider, image slider, image slider plugin, javascript rotator, javascript slider, jquery rotator, photo rotator, Photo Slider, picture slider, rotator, shortcode, slider plugin, slideshow plugin, slider shortcode, carousel plugin, thumbnails, css3, css
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 1.0.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,17 @@ First version
 
 = 1.0.1 =
 Fixed much of bugs:
-* Double links
-* `default` skin link replaced
-* some js admin errors
+- Double links
+- default skin link replaced
+- some js admin errors
+
+= 1.1 =
+- Random banners rotate in slider
+- Fixed some bugs :)
+- Some visual addons like delete slider list item with slider remove
+- new RegExp for unusual URLs (e.g. for some free hostings with a lot of subdomains)
+- allow to add # and javascript:; for banner link
+- fully custom skins support
+
+= 1.1.1 =
+- Even uppercase letters for slider hash
