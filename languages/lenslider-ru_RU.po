@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPLenSlider\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-18 16:31+0400\n"
-"PO-Revision-Date: 2012-11-18 16:31+0400\n"
+"POT-Creation-Date: 2012-12-23 22:28+0400\n"
+"PO-Revision-Date: 2012-12-23 22:31+0400\n"
 "Last-Translator: Игорь <sovletig@yandex.ru>\n"
 "Language-Team: Igor Sazonov <sovletig@yandex.ru>\n"
 "Language: ru_RU\n"
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Images"
 msgstr "Изображения"
 
-#: ../ls-settings.php:60 ../lib/lenslider.class.php:272
+#: ../ls-settings.php:60 ../lib/lenslider.class.php:288
 #, php-format
 msgid ""
 "Upload images maximum size, MB<br /><span class=\"description\">(max: %d)</"
@@ -191,11 +191,11 @@ msgstr "Загрузить новый скин (шаблон) (*.zip)"
 msgid "Upload skin"
 msgstr "Загрузить скин (шаблон)"
 
-#: ../ls-skins.php:48 ../lib/lenslider.class.php:339
+#: ../ls-skins.php:48 ../lib/lenslider.class.php:362
 msgid "Skins"
 msgstr "Скины (шаблоны)"
 
-#: ../ls-skins.php:55 ../lib/lenslider.class.php:346
+#: ../ls-skins.php:55 ../lib/lenslider.class.php:369
 msgid "No skins available"
 msgstr "Доступных скинов (шаблонов) нет"
 
@@ -211,85 +211,64 @@ msgstr "Вставить"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: ../lib/lenslider.class.php:85
-msgid ""
-"NOTE: After you change the skin for the slider and update the data, slider "
-"will be resaved as disabled. Then you’ll be able to change its status on "
-"your own to enable it and then update the data."
-msgstr ""
-"ВНИМАНИЕ: После смены скина для слайдера и пересохранения данных (обновления "
-"данных), слайдер пересохранится как отключенный. Затем Вы сможете "
-"самостоятельно поменять его статус на включенный и пересохранить (обновить "
-"данные)."
-
-#: ../lib/lenslider.class.php:182 ../lib/lenslider.class.php:340
-#: ../lib/lenslider.class.php:1464
+#: ../lib/lenslider.class.php:198 ../lib/lenslider.class.php:363
+#: ../lib/lenslider.class.php:1563
 msgid "Settings"
 msgstr "Параметры"
 
-#: ../lib/lenslider.class.php:193
-msgid "FAQ"
-msgstr "ЧаВО"
-
-#: ../lib/lenslider.class.php:194
-msgid "Support"
-msgstr "Поддержка"
-
-#: ../lib/lenslider.class.php:195
-msgid "Donate"
-msgstr ""
-
-#: ../lib/lenslider.class.php:203
-msgid "Free slider plugin for WordPress"
-msgstr "Бесплатный плагин слайдеров для WordPress"
-
-#: ../lib/lenslider.class.php:203
+#: ../lib/lenslider.class.php:219
 msgid "WordPress LenSlider"
 msgstr "Слайдеры WordPress"
 
-#: ../lib/lenslider.class.php:212
+#: ../lib/lenslider.class.php:219
+msgid "Free slider plugin for WordPress"
+msgstr "Бесплатный плагин слайдеров для WordPress"
+
+#: ../lib/lenslider.class.php:228
 msgid "Banner link"
 msgstr "Ссылка баннера"
 
-#: ../lib/lenslider.class.php:214
+#: ../lib/lenslider.class.php:230
 msgid "Banner URL path. A minimum of 10 characters"
 msgstr "Ссылка баннера. Минимум 10 символов"
 
-#: ../lib/lenslider.class.php:219
+#: ../lib/lenslider.class.php:235
 msgid "Banner title"
 msgstr "Заголовок для баннера"
 
-#: ../lib/lenslider.class.php:221
+#: ../lib/lenslider.class.php:237
 msgid "Banner title. A minimum of 10 characters"
 msgstr "Заголовок баннера. Минимум 10 символов"
 
-#: ../lib/lenslider.class.php:226
+#: ../lib/lenslider.class.php:242
 #: ../skins/vania_fit/lib/vania_fit.skin.class.php:12
 msgid "Banner text"
 msgstr "Текст баннера"
 
-#: ../lib/lenslider.class.php:235
+#: ../lib/lenslider.class.php:251
 msgid "Banner image"
 msgstr "Изображение для баннера"
 
-#: ../lib/lenslider.class.php:239
+#: ../lib/lenslider.class.php:255
 msgid "Post image"
 msgstr "Изображение из записи"
 
-#: ../lib/lenslider.class.php:243
+#: ../lib/lenslider.class.php:259
 msgid "Banner thumbnail"
 msgstr "Миниатюра для баннера"
 
-#: ../lib/lenslider.class.php:247
+#: ../lib/lenslider.class.php:263
 msgid "Post thumb"
 msgstr "Миниатюра записи"
 
-#: ../lib/lenslider.class.php:257
-#: ../skins/dares_serpent/lib/dares_serpent.skin.class.php:27
+#: ../lib/lenslider.class.php:273
+#: ../skins/nemo_target/lib/nemo_target.skin.class.php:24
+#: ../skins/smart_energy/lib/smart_energy.skin.class.php:37
 msgid "Maximum thumbnail width, px"
 msgstr "Максимальная ширина миниатюры, пикс"
 
-#: ../lib/lenslider.class.php:267
+#: ../lib/lenslider.class.php:283
+#: ../skins/nemo_target/lib/nemo_target.skin.class.php:12
 #: ../skins/smart_energy/lib/smart_energy.skin.class.php:25
 #: ../skins/vania_fit/lib/vania_fit.skin.class.php:18
 #, php-format
@@ -300,7 +279,8 @@ msgstr ""
 "Ограничение количества баннеров для Слайдера %s <span class=\"description\">"
 "(макс: %d)</span>"
 
-#: ../lib/lenslider.class.php:277
+#: ../lib/lenslider.class.php:293
+#: ../skins/nemo_target/lib/nemo_target.skin.class.php:16
 #: ../skins/smart_energy/lib/smart_energy.skin.class.php:29
 #: ../skins/vania_fit/lib/vania_fit.skin.class.php:22
 #, php-format
@@ -311,7 +291,7 @@ msgstr ""
 "Максимальная ширина загружаемого изображения, пикс<br /><span class="
 "\"description\">(мин: %1d; макс: %2d); пропорции сохраняются</span>"
 
-#: ../lib/lenslider.class.php:282
+#: ../lib/lenslider.class.php:298
 #, php-format
 msgid ""
 "Maximum quality of uploaded image<br /><span class=\"description\">(min: "
@@ -320,38 +300,39 @@ msgstr ""
 "Максимальное качество загружаемого изображения<br /><span class=\"description"
 "\">(мин: %1d, макс: %2d)</span>"
 
-#: ../lib/lenslider.class.php:287
-#: ../skins/dares_serpent/lib/dares_serpent.skin.class.php:23
+#: ../lib/lenslider.class.php:303
+#: ../skins/nemo_target/lib/nemo_target.skin.class.php:20
+#: ../skins/smart_energy/lib/smart_energy.skin.class.php:33
 #, php-format
 msgid "Enable banners thumbnails for Slider %s"
 msgstr "Создавать минатюры для баннеров Слайдера %s"
 
-#: ../lib/lenslider.class.php:339
+#: ../lib/lenslider.class.php:362
 msgid "Available LenSlider skins"
 msgstr "Доступные скины (шаблоны) LenSlider"
 
-#: ../lib/lenslider.class.php:340
+#: ../lib/lenslider.class.php:363
 msgid "LenSlider settings"
 msgstr "Параметры LenSlider"
 
-#: ../lib/lenslider.class.php:346
+#: ../lib/lenslider.class.php:369
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
-#: ../lib/lenslider.class.php:346
+#: ../lib/lenslider.class.php:369
 msgid "You also want to delete thumbnail for this banner?"
 msgstr "Вы хотите также удалить и миниатюру к этому баннеру?"
 
-#: ../lib/lenslider.class.php:346 ../lib/lenslider.class.php:1493
+#: ../lib/lenslider.class.php:369 ../lib/lenslider.class.php:1592
 #: ../lib/lenslider.settings.class.php:11
 msgid "slider comment"
 msgstr "комментарий к слайдеру"
 
-#: ../lib/lenslider.class.php:346
+#: ../lib/lenslider.class.php:369
 msgid "Errors"
 msgstr "Ошибки"
 
-#: ../lib/lenslider.class.php:346
+#: ../lib/lenslider.class.php:369
 msgid ""
 "If  there are errors while filling fields, then check the fields marked with "
 "red border."
@@ -359,187 +340,202 @@ msgstr ""
 "При заполнении полей баннеров возникли ошибки, проверьте поля выделенные "
 "красной границей."
 
-#: ../lib/lenslider.class.php:346 ../lib/lenslider.class.php:1471
+#: ../lib/lenslider.class.php:369 ../lib/lenslider.class.php:1570
 msgid "Maximize"
 msgstr "Развернуть"
 
-#: ../lib/lenslider.class.php:346 ../lib/lenslider.class.php:1471
+#: ../lib/lenslider.class.php:369 ../lib/lenslider.class.php:1570
 msgid "Minimize"
 msgstr "Свернуть"
 
-#: ../lib/lenslider.class.php:346
+#: ../lib/lenslider.class.php:369
 msgid "Do you want to set skin settings for the slider?"
 msgstr "Вы хотите установить параметры данного скина?"
 
-#: ../lib/lenslider.class.php:346
+#: ../lib/lenslider.class.php:369
 msgid "Slider #{%torep%} errors:"
 msgstr "Ошибки у Слайдера #{%torep%}:"
 
-#: ../lib/lenslider.class.php:346
+#: ../lib/lenslider.class.php:369
 msgid "Banner {%torep%} errors:"
 msgstr "Ошибки у баннера {%torep%}:"
 
-#: ../lib/lenslider.class.php:413
+#: ../lib/lenslider.class.php:453
 msgid "No sliders available"
 msgstr "Доступных (включенных) слайдеров нет"
 
-#: ../lib/lenslider.class.php:420 ../lib/lenslider.class.php:432
-#: ../lib/lenslider.class.php:436
+#: ../lib/lenslider.class.php:462 ../lib/lenslider.class.php:474
+#: ../lib/lenslider.class.php:478
 msgid "Select..."
 msgstr "Выберите..."
 
-#: ../lib/lenslider.class.php:1142
+#: ../lib/lenslider.class.php:1222
 msgid "Url"
 msgstr "Ссылка"
 
-#: ../lib/lenslider.class.php:1143
+#: ../lib/lenslider.class.php:1223
 msgid "Post"
 msgstr "Запись"
 
-#: ../lib/lenslider.class.php:1144
+#: ../lib/lenslider.class.php:1224
 msgid "Page"
 msgstr "Страница"
 
-#: ../lib/lenslider.class.php:1145
+#: ../lib/lenslider.class.php:1225
 msgid "Category"
 msgstr "Категория"
 
-#: ../lib/lenslider.class.php:1375
+#: ../lib/lenslider.class.php:1473
 #, php-format
 msgid "Banner %d expand / collapse"
 msgstr "Свернуть / развернуть баннер %d"
 
-#: ../lib/lenslider.class.php:1376
+#: ../lib/lenslider.class.php:1474
 #, php-format
 msgid "Delete banner %d of Slider %s"
 msgstr "Удалить баннер %d Слайдера %s"
 
-#: ../lib/lenslider.class.php:1379
+#: ../lib/lenslider.class.php:1477
 #, php-format
 msgid "Banner %d"
 msgstr "Баннер %d"
 
-#: ../lib/lenslider.class.php:1384
+#: ../lib/lenslider.class.php:1482
 #, php-format
 msgid "Banner %d image"
 msgstr "Изображение для баннера %d"
 
-#: ../lib/lenslider.class.php:1392
+#: ../lib/lenslider.class.php:1490
 msgid "Delete image"
 msgstr "Удалить изображение"
 
-#: ../lib/lenslider.class.php:1407
+#: ../lib/lenslider.class.php:1505
 #, php-format
 msgid "Banner %d thumbnail"
 msgstr "Миниатюра для баннера %d"
 
-#: ../lib/lenslider.class.php:1415
+#: ../lib/lenslider.class.php:1513
 msgid "Delete thumbnail"
 msgstr "Удалить миниатюру"
 
-#: ../lib/lenslider.class.php:1460
+#: ../lib/lenslider.class.php:1548
+msgid ""
+"NOTE: After you change the skin for the slider and update the data, slider "
+"will be resaved as disabled. Then you’ll be able to change its status on "
+"your own to enable it and then update the data."
+msgstr ""
+"ВНИМАНИЕ: После смены скина для слайдера и пересохранения данных (обновления "
+"данных), слайдер пересохранится как отключенный. Затем Вы сможете "
+"самостоятельно поменять его статус на включенный и пересохранить (обновить "
+"данные)."
+
+#: ../lib/lenslider.class.php:1559
 #, php-format
 msgid "Slider <u>%s</u>"
 msgstr "Слайдер <u>%s</u>"
 
-#: ../lib/lenslider.class.php:1463
+#: ../lib/lenslider.class.php:1562
 msgid "Banners"
 msgstr "Баннеры"
 
-#: ../lib/lenslider.class.php:1470
+#: ../lib/lenslider.class.php:1569
 msgid "Full delete Slider"
 msgstr "Полное удаление Слайдера"
 
-#: ../lib/lenslider.class.php:1471
+#: ../lib/lenslider.class.php:1570
 #, php-format
 msgid "Expand / Collapse Slider %s banners"
 msgstr "Свернуть / Развернуть баннеры Слайдера %s"
 
-#: ../lib/lenslider.class.php:1473
+#: ../lib/lenslider.class.php:1572
 msgid "Remove Slider form"
 msgstr "Убрать форму Слайдера"
 
-#: ../lib/lenslider.class.php:1483
+#: ../lib/lenslider.class.php:1582
 msgid "Slider skin"
 msgstr "Скин (шаблон) для слайдера"
 
-#: ../lib/lenslider.class.php:1486
+#: ../lib/lenslider.class.php:1585
 msgid "Enable"
 msgstr "Включен"
 
-#: ../lib/lenslider.class.php:1488
+#: ../lib/lenslider.class.php:1587
 msgid "Disable"
 msgstr "Отключен"
 
-#: ../lib/lenslider.class.php:1500
+#: ../lib/lenslider.class.php:1600
+msgid "Random"
+msgstr "Случайно"
+
+#: ../lib/lenslider.class.php:1604
 msgid "Quick info"
 msgstr "Информация"
 
-#: ../lib/lenslider.class.php:1501
+#: ../lib/lenslider.class.php:1605
 #, php-format
 msgid "Slider #%s preview"
 msgstr "Предпросмотр Слайдера #%s"
 
-#: ../lib/lenslider.class.php:1501
+#: ../lib/lenslider.class.php:1605
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: ../lib/lenslider.class.php:1513
+#: ../lib/lenslider.class.php:1618
 #, php-format
 msgid "Slider %s settings"
 msgstr "Параметры Слайдера %s"
 
-#: ../lib/lenslider.class.php:1517
+#: ../lib/lenslider.class.php:1622
 msgid "Get global settings"
 msgstr "Получить глобальные параметры"
 
-#: ../lib/lenslider.class.php:1518
+#: ../lib/lenslider.class.php:1623
 msgid "Return local settings"
 msgstr "Вернуть локальные параметры"
 
-#: ../lib/lenslider.class.php:1519
+#: ../lib/lenslider.class.php:1624
 msgid "Set skin settings"
 msgstr "Задать параметры скина (шаблона)"
 
-#: ../lib/lenslider.class.php:1528
+#: ../lib/lenslider.class.php:1633
 #, php-format
 msgid "Add new banner for Slider %s"
 msgstr "Добавить новый баннер для Слайдера %s"
 
-#: ../lib/lenslider.class.php:1548
+#: ../lib/lenslider.class.php:1653
 #, php-format
 msgid "Slider <u>#%s</u>"
 msgstr "Слайдер <u>%s</u>"
 
-#: ../lib/lenslider.skins.class.php:101
+#: ../lib/lenslider.skins.class.php:140
 msgid "Skin files location:"
 msgstr "Папка скина (шаблона):"
 
-#: ../lib/lenslider.skins.class.php:102
+#: ../lib/lenslider.skins.class.php:141
 msgid "Date:"
 msgstr "Дата:"
 
-#: ../lib/lenslider.skins.class.php:102
+#: ../lib/lenslider.skins.class.php:141
 msgid "Author:"
 msgstr "Автор:"
 
-#: ../lib/lenslider.skins.class.php:102
+#: ../lib/lenslider.skins.class.php:141
 msgid "Version:"
 msgstr "Версия:"
 
-#: ../lib/lenslider.skins.class.php:102
+#: ../lib/lenslider.skins.class.php:141
 msgid "url:"
 msgstr "ссылка:"
 
-#: ../lib/lenslider.skins.class.php:105
+#: ../lib/lenslider.skins.class.php:144
 msgid "view"
 msgstr "просмотр"
 
-#: ../lib/lenslider.skins.class.php:106
+#: ../lib/lenslider.skins.class.php:145
 msgid "You couldn't delete uses skin!"
 msgstr "Вы не можете удалять используемый скин (шаблон)"
 
-#: ../lib/lenslider.skins.class.php:106
+#: ../lib/lenslider.skins.class.php:145
 msgid "Delete"
 msgstr "Удалить"
 
@@ -550,6 +546,12 @@ msgstr ""
 #: ../skins/smart_energy/lib/smart_energy.skin.class.php:18
 msgid "Text near thumb"
 msgstr ""
+
+#~ msgid "FAQ"
+#~ msgstr "ЧаВО"
+
+#~ msgid "Support"
+#~ msgstr "Поддержка"
 
 #~ msgid "Ways to insert slider #<em>%s</em> code to your site"
 #~ msgstr "Способы вставить код Слайдера #<em>%s</em> в ваш сайт"

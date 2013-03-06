@@ -2,8 +2,7 @@
 final class Dares_serpentLenSliderSkin extends LenSlider {
     public $bannerMergeArray;
     public $bannerUnsetArray;
-    protected $_sliderSettingsArray;
-    protected $_sliderMergeSettingsArray;
+    public $sliderMergeSettingsArray;
     protected $_jsHead;
 
     public function __construct() {
@@ -11,13 +10,14 @@ final class Dares_serpentLenSliderSkin extends LenSlider {
             'ls_ds_subtite' => array(
                 'title' => 'Banner subtitle',
                 'type' => 'input',
-                'tipsy'  => "Subtitle under main title"
+                //'tipsy'  => "Subtitle under main title"
             )
         );
-        $this->_sliderMergeSettingsArray = array(
+        $this->sliderMergeSettingsArray = array(
             'ls_images_maxwidth' => array(
+                'mini_title' => __( 'Max width', 'lenslider' ),
                 'title' => "image max width", 'value' => 450,
-                'maxlength' => 3, 'type' => 'input'
+                'maxlength' => 3, 'type' => 'input', 'spinner' => true, 'ext' => 'px'
             )/*,
             'ls_has_thumb' => array(
                 'title' => sprintf(__("Enable banners thumbnails for Slider %s", 'lenslider'), $n_slider),

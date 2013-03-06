@@ -2,7 +2,7 @@
 final class Smart_energyLenSliderSkin extends LenSlider {
     public $bannerMergeArray;
     public $bannerUnsetArray;
-    protected $_sliderMergeSettingsArray;
+    public $sliderMergeSettingsArray;
     protected $_jsHead;
 
     public function __construct() {
@@ -20,22 +20,21 @@ final class Smart_energyLenSliderSkin extends LenSlider {
                     'tcheck' => true
                 )
         );
-        $this->_sliderMergeSettingsArray = array(
+        $this->sliderMergeSettingsArray = array(
             'ls_banners_limit' => array(
-                'title' => sprintf(__("Limitation of banners for the slider %s <span class=\"description\">(max: %d)</span>", 'lenslider'), $n_slider, $this->bannersLimitDefault),
-                'value' => 4, 'maxlength' => 1, 'invariable' => 4, 'type' => 'input'
-            ),
-            'ls_images_maxwidth' => array(
-                'title' => sprintf(__("Maximum image width, px<br /><span class=\"description\">(min: %1d; max: %2d); proportions are kept</span>", 'lenslider'), $this->imageWidthMIN, $this->imageWidthMAX),
-                'value' => 960, 'maxlength' => 4, 'type' => 'input'
+                'desc' => __("Maximum of enabled banners for this slider", 'lenslider'),
+                'title' => __("Banners limit", 'lenslider'),
+                'type' => 'input', 'size' => 5, 'maxlength' => 2, 'spectype' => 'int', 'spinner' => true
             ),
             'ls_has_thumb' => array(
-                'title' => sprintf(__("Enable banners thumbnails for Slider %s", 'lenslider'), $n_slider),
-                'type' => 'checkbox', 'class' => 'chbx_is_thumb', 'value' => 'on'
+                'desc' => __("Make thumbs", 'lenslider'),
+                'title' => __("Make thumbs", 'lenslider'),
+                'type' => 'checkbox', 'class' => 'chbx_is_thumb'
             ),
             'ls_thumb_max_width' => array(
+                'mini_title' => __("Thumb max width", 'lenslider'),
                 'title' => __("Maximum thumbnail width, px", 'lenslider'),
-                'type' => 'input', 'size' => 5, 'maxlength' => 2, 'spectype' => 'int', 'value' => 40
+                'type' => 'input', 'size' => 5, 'maxlength' => 2, 'spectype' => 'int', 'value' => 40, 'spinner' => true, 'ext' => 'px'
             )
         );
     }

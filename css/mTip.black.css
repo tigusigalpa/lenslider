@@ -1,0 +1,9 @@
+/**
+ * mTip black theme, by mauvm
+ * Sep 2, 2011
+ * version 1.0
+ * http://dev.mauvm.nl/mTip
+ *
+ * mTip is dual licensed under the MIT and GPL licenses.
+ **/
+.black.mTip{position: relative;margin:0;padding:3px 6px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;background-color:#000;background-color: rgba(0,0,0,.7);color:#FFF;z-index:100000;font-family: Verdana,Arial,sans-serif;font-size:11px;line-height:18px;}.black.mTip:after{content: ' ';width:0;height:0;position:absolute;margin:0;border:5px solid #000;border-color: transparent;}.black.mTip-top{margin: -5px 0 0 0;}.black.mTip-top:after{left:50%;top:100%;margin:0 0 0 -5px;border-top-color:#000;border-top-color: rgba(0,0,0,.7);}.black.mTip-top-right{margin: -5px 0 0 -50px;}.black.mTip-top-right:after{left:25px;top:100%;margin:0 0 0 -5px;border-top-color:#000;border-top-color: rgba(0,0,0,.7);}.black.mTip-right{margin:0 0 0 5px;}.black.mTip-right:after{left: -10px;top:50%;margin: -5px 0 0;border-right-color:#000;border-right-color: rgba(0,0,0,.7);}.black.mTip-bottom-right{margin:5px 0 0 -50px;}.black.mTip-bottom-right:after{left:25px;top: -10px;margin:0 0 0 -5px;border-bottom-color:#000;border-bottom-color: rgba(0,0,0,.7);}.black.mTip-bottom{margin:5px 0 0;}.black.mTip-bottom:after{left:50%;top: -10px;margin:0 0 0 -5px;border-bottom-color:#000;border-bottom-color: rgba(0,0,0,.7);}.black.mTip-bottom-left{margin:5px 0 0 50px;}.black.mTip-bottom-left:after{right:20px;top: -10px;margin:0 0 0 -5px;border-bottom-color:#000;border-bottom-color: rgba(0,0,0,.7);}.black.mTip-left{margin:0 0 0 -5px;}.black.mTip-left:after{left:100%;top:50%;margin: -5px 0 0;border-left-color:#000;border-left-color: rgba(0,0,0,.7);}.black.mTip-top-left{margin: -5px 0 0 50px;}.black.mTip-top-left:after{right:20px;top:100%;margin:0 0 0 -5px;border-top-color:#000;border-top-color: rgba(0,0,0,.7);}

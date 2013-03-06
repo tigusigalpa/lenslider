@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+var smart_energy_lenslider_fn = function(inparr) {
     jQuery(".ls_sm_en_ib_manage li").hover(
         function() {
             jQuery(this).addClass("hvr");
@@ -19,5 +19,5 @@ jQuery(document).ready(function() {
                 jQuery("#ibo_"+ui.index).fadeIn(300);
             }
         }
-    ).tabs("rotate", 6000);
-});
+    ).tabs("rotate", inparr.slideshow.ls_autoplay_delay);
+}

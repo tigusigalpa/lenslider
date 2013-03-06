@@ -2,8 +2,7 @@
 final class Vania_fitLenSliderSkin extends LenSlider {
     public $bannerMergeArray;
     public $bannerUnsetArray;
-    protected $_sliderSettingsArray;
-    protected $_sliderMergeSettingsArray;
+    public $sliderMergeSettingsArray;
     protected $_jsHead;
 
     public function __construct() {
@@ -13,14 +12,16 @@ final class Vania_fitLenSliderSkin extends LenSlider {
                 'type' => 'textarea', 'maxlength' => 82
             )
         );
-        $this->_sliderMergeSettingsArray = array(
+        $this->sliderMergeSettingsArray = array(
             'ls_banners_limit' => array(
-                'title' => sprintf(__("Limitation of banners for the slider %s <span class=\"description\">(max: %d)</span>", 'lenslider'), $n_slider, $this->bannersLimitDefault),
-                'value' => 4, 'maxlength' => 1, 'invariable' => 4, 'type' => 'input'
+                'mini_title' => __( 'Banners limit', 'lenslider' ),
+                'title' => sprintf(__("Limitation of banners for the slider %s <span class=\"description\">(max: %d)</span>", 'lenslider'), $n_slider, LenSlider::$bannersLimitDefault),
+                'value' => 4, 'maxlength' => 1, 'invariable' => 4, 'type' => 'input', 'spinner' => true
             ),
             'ls_images_maxwidth' => array(
+                'mini_title' => __( 'Max width', 'lenslider' ),
                 'title' => sprintf(__("Maximum image width, px<br /><span class=\"description\">(min: %1d; max: %2d); proportions are kept</span>", 'lenslider'), $this->imageWidthMIN, $this->imageWidthMAX),
-                'value' => 721, 'maxlength' => 4, 'type' => 'input'
+                'value' => 721, 'maxlength' => 4, 'type' => 'input', 'spinner' => true, 'ext' => 'px'
             )
         );
     }

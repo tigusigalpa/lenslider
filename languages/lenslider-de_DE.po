@@ -1,0 +1,622 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPLenSlider\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-01 23:06+0400\n"
+"PO-Revision-Date: 2012-12-06 00:30+0100\n"
+"Last-Translator: Christian Wenzl <post@christian-wenzl.de>\n"
+"Language-Team: Christian Wenzl <post@christian-wenzl.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: de_DE\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../ls-index.php:52
+msgid "Save"
+msgstr "Speichern"
+
+#: ../ls-index.php:56
+msgid "Select skin:"
+msgstr "Skin auswählen:"
+
+#: ../ls-index.php:58
+msgid "Add new slider"
+msgstr "Neuen Slider erstellen"
+
+#: ../ls-index.php:61
+msgid "Sliders list"
+msgstr "Verfügbare Slider"
+
+#: ../ls-index.php:65
+msgid "Submit LenSlider data"
+msgstr "Speichere LenSlider Daten"
+
+#: ../ls-settings.php:26
+msgid "LenSlider settings updated"
+msgstr "LenSlider Einstellungen aktualisiert"
+
+#: ../ls-settings.php:36
+msgid "LenSlider Settings"
+msgstr "LenSlider Einstellungen"
+
+#: ../ls-settings.php:38
+msgid "General"
+msgstr "Allgemein"
+
+#: ../ls-settings.php:41
+#, php-format
+msgid "Sliders limit<br /><span class=\"description\">(max: %d)</span>"
+msgstr "Slider-Limit<br /><span class=\"description\">(max: %d)</span>"
+
+#: ../ls-settings.php:45
+#, php-format
+msgid ""
+"Banners limit for each slider<br /><span class=\"description\">(max: %d)</"
+"span>"
+msgstr ""
+"Bannerlimit für jeden Slider <br /><span class=\"description\">(max: %d)</"
+"span>"
+
+#: ../ls-settings.php:49
+msgid "Enable WordPress cache for sliders"
+msgstr "Aktiviere WordPress-Cache für Slider"
+
+#: ../ls-settings.php:53
+msgid "Tooltip hint"
+msgstr "Tooltip-Hinweise"
+
+#: ../ls-settings.php:54
+msgid ""
+"Enable <a href=\"http://onehackoranother.com/projects/jquery/tipsy/\" target="
+"\"_blank\">tipsy</a> tooltip for control buttons"
+msgstr ""
+"Aktiviere <a href=\"http://onehackoranother.com/projects/jquery/tipsy/\" "
+"target=\"_blank\">tipsy</a> Tooltips für Steuerelemente"
+
+#: ../ls-settings.php:57
+msgid "Images"
+msgstr "Bilder"
+
+#: ../ls-settings.php:60 ../lib/lenslider.class.php:286
+#, php-format
+msgid ""
+"Upload images maximum size, MB<br /><span class=\"description\">(max: %d)</"
+"span>"
+msgstr ""
+"Maximale Uploadgröße, MB<br /><span class=\"description\">(max: %d)</span>"
+
+#: ../ls-settings.php:64
+#, php-format
+msgid ""
+"Maximum image width, px<br /><span class=\"description\">(min: %1d; max: %2d)"
+"<br />proportions are kept</span>"
+msgstr ""
+"Maximale Bildbreite, px<br /><span class=\"description\">(min: %1d; max: %2d)"
+"<br />Seitenverhältnis bleibt erhalten</span>"
+
+#: ../ls-settings.php:68
+#, php-format
+msgid ""
+"Maximum quality of uploaded image<br /><span class=\"description\">(min: "
+"%1d; max: %2d)<br />percents</span>"
+msgstr ""
+"Maximale Qualitätsstufe hochgeladener Bilder<br /><span class=\"description"
+"\">(min: %1d; max: %2d)<br />Prozent</span>"
+
+#: ../ls-settings.php:72
+msgid "Help"
+msgstr "Hilfe"
+
+#: ../ls-settings.php:75
+msgid ""
+"I would like to support plugin creators and place a plugin link to my site"
+msgstr ""
+"Ich möchte die Plugin-Autoren unterstützen und setze einen Link auf die "
+"Seite."
+
+#: ../ls-settings.php:76
+msgid "Thanks! Let Your dreams come true!"
+msgstr "Dankeschön! Lassen Sie Ihre Träume wahr werden!"
+
+#: ../ls-settings.php:79
+msgid "Update settings"
+msgstr "Einstellungen aktualisieren"
+
+#: ../ls-skins.php:5
+msgid ""
+"A folder with the same skin name already exists. Perhaps, the skin is "
+"already installed."
+msgstr "Ein gleichlautender Skin ist bereits vorhanden."
+
+#: ../ls-skins.php:6
+msgid ""
+"You can’t upload the skin called the 'default', the one is pre-installed."
+msgstr ""
+"Sie können keinen Skin namens 'default' hochladen, dieser ist bereits "
+"vorinstalliert."
+
+#: ../ls-skins.php:7
+msgid ""
+"Uploadable skin zip-archive can't be extracted. Internal ZipArchive Class "
+"error."
+msgstr "Zip-Datei kann nicht entpackt werden, interner Fehler."
+
+#: ../ls-skins.php:8
+#, php-format
+msgid ""
+"Your PHP version (%s) doesnt include a ZipArchive class. You need to upgrade "
+"to php 5.2+ or manually upload archive files into skins folder."
+msgstr ""
+"Ihre PHP-Version (%s) beinhaltet keine Unterstützung für Zip-Archive. Bitte "
+"auf PHP 5.2+ upgraden oder manuell in den Skin-Ordner hochladen."
+
+#: ../ls-skins.php:9
+msgid "This skin is already installed."
+msgstr "Dieses Skin ist bereits installiert."
+
+#: ../ls-skins.php:10
+msgid ""
+"Uploadable zip-file is invalid: invalid archive mime-type or incorrect name "
+"of skin zip-archive."
+msgstr "Zip-Datei ungültig, MIME-Type oder Name der Zip-Datei falsch"
+
+#: ../ls-skins.php:16
+msgid "LenSlider skins list updated"
+msgstr "LenSlider Skins aktualisiert"
+
+#: ../ls-skins.php:28
+#, php-format
+msgid "LenSlider v%s skins"
+msgstr "LenSlider v%s Skins"
+
+#: ../ls-skins.php:36
+msgid "Upload a new skin (*.zip)"
+msgstr "Neuen Skin hochladen (*.zip)"
+
+#: ../ls-skins.php:38
+msgid "Upload skin"
+msgstr "Skin hochladen"
+
+#: ../ls-skins.php:48 ../lib/lenslider.class.php:357
+msgid "Skins"
+msgstr "Skins"
+
+#: ../ls-skins.php:55 ../lib/lenslider.class.php:362
+msgid "No skins available"
+msgstr "Keine Skins vorhanden"
+
+#: ../tinymce.php:16
+msgid "Select slider to insert:"
+msgstr "Slider zum Einfügen auswählen"
+
+#: ../tinymce.php:20
+msgid "Insert"
+msgstr "Einfügen"
+
+#: ../tinymce.php:23
+msgid "Cancel"
+msgstr "Abbruch"
+
+#: ../lib/lenslider.class.php:89
+msgid ""
+"NOTE: After you change the skin for the slider and update the data, slider "
+"will be resaved as disabled. Then you’ll be able to change its status on "
+"your own to enable it and then update the data."
+msgstr ""
+"ACHTUNG: Nachdem Sie den Skin des Sliders ändern und die Daten "
+"aktualisieren, wird der Slider als inaktiv gespeichert. Sie können den "
+"Status anschließend selbst ändern und den Slider wieder aktivieren bzw. "
+"Daten ändern."
+
+#: ../lib/lenslider.class.php:196 ../lib/lenslider.class.php:358
+#: ../lib/lenslider.class.php:1551
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: ../lib/lenslider.class.php:217
+msgid "WordPress LenSlider"
+msgstr "WordPress LenSlider"
+
+#: ../lib/lenslider.class.php:217
+msgid "Free slider plugin for WordPress"
+msgstr "Kostenloses Slider-Plugin für Wordpress"
+
+#: ../lib/lenslider.class.php:226
+msgid "Banner link"
+msgstr "Bannerlink"
+
+#: ../lib/lenslider.class.php:228
+msgid "Banner URL path. A minimum of 10 characters"
+msgstr "Bannerurl, mindestens 10 Zeichen"
+
+#: ../lib/lenslider.class.php:233
+msgid "Banner title"
+msgstr "Bannertitel"
+
+#: ../lib/lenslider.class.php:235
+msgid "Banner title. A minimum of 10 characters"
+msgstr "Bannertitel, mindestens 10 Zeichen"
+
+#: ../lib/lenslider.class.php:240
+#: ../skins/vania_fit/lib/vania_fit.skin.class.php:12
+msgid "Banner text"
+msgstr "Bannertext"
+
+#: ../lib/lenslider.class.php:249
+msgid "Banner image"
+msgstr "Banner"
+
+#: ../lib/lenslider.class.php:253
+msgid "Post image"
+msgstr "Artikelbild"
+
+#: ../lib/lenslider.class.php:257
+msgid "Banner thumbnail"
+msgstr "Banner-Vorschaubild"
+
+#: ../lib/lenslider.class.php:261
+msgid "Post thumb"
+msgstr "Artikel-Vorschaubild"
+
+#: ../lib/lenslider.class.php:271
+#: ../skins/smart_energy/lib/smart_energy.skin.class.php:37
+msgid "Maximum thumbnail width, px"
+msgstr "Maximale Vorschaubild-Breite, px"
+
+#: ../lib/lenslider.class.php:281
+#: ../skins/smart_energy/lib/smart_energy.skin.class.php:25
+#: ../skins/vania_fit/lib/vania_fit.skin.class.php:18
+#, php-format
+msgid ""
+"Limitation of banners for the slider %s <span class=\"description\">(max: %d)"
+"</span>"
+msgstr ""
+"Maximale Anzahl an Bannern für Slider %s <span class=\"description\">(max: "
+"%d)</span>"
+
+#: ../lib/lenslider.class.php:291
+#: ../skins/smart_energy/lib/smart_energy.skin.class.php:29
+#: ../skins/vania_fit/lib/vania_fit.skin.class.php:22
+#, php-format
+msgid ""
+"Maximum image width, px<br /><span class=\"description\">(min: %1d; max: "
+"%2d); proportions are kept</span>"
+msgstr ""
+"Maximale Bildbreite<br /><span class=\"description\">(min: %1d; max: %2d); "
+"Seitenverhältnis bleibt erhalten</span>"
+
+#: ../lib/lenslider.class.php:296
+#, php-format
+msgid ""
+"Maximum quality of uploaded image<br /><span class=\"description\">(min: "
+"%1d, max: %2d)</span>"
+msgstr ""
+"Maximale Qualitätsstufe hochgeladener Bilder<br /><span class=\"description"
+"\">(min: %1d, max: %2d)</span>"
+
+#: ../lib/lenslider.class.php:301
+#: ../skins/smart_energy/lib/smart_energy.skin.class.php:33
+#, php-format
+msgid "Enable banners thumbnails for Slider %s"
+msgstr "Aktiviere Banner-Vorschaubilder für Slider %s"
+
+#: ../lib/lenslider.class.php:357
+msgid "Available LenSlider skins"
+msgstr "Verfügbare LenSlider Skins"
+
+#: ../lib/lenslider.class.php:358
+msgid "LenSlider settings"
+msgstr "LenSlider Einstellungen"
+
+#: ../lib/lenslider.class.php:362
+msgid "Are you sure?"
+msgstr "Sicher?"
+
+#: ../lib/lenslider.class.php:362
+msgid "You also want to delete thumbnail for this banner?"
+msgstr "Sie möchten das Vorschaubild für diesen Banner löschen?"
+
+#: ../lib/lenslider.class.php:362 ../lib/lenslider.class.php:1580
+#: ../lib/lenslider.settings.class.php:11
+msgid "slider comment"
+msgstr "Slider Kommentar"
+
+#: ../lib/lenslider.class.php:362
+msgid "Errors"
+msgstr "Fehler"
+
+#: ../lib/lenslider.class.php:362
+msgid ""
+"If  there are errors while filling fields, then check the fields marked with "
+"red border."
+msgstr "Bitte prüfen Sie im Falle von Fehlern die rot umrandeten Felder."
+
+#: ../lib/lenslider.class.php:362 ../lib/lenslider.class.php:1558
+msgid "Maximize"
+msgstr "Maximieren"
+
+#: ../lib/lenslider.class.php:362 ../lib/lenslider.class.php:1558
+msgid "Minimize"
+msgstr "Minimieren"
+
+#: ../lib/lenslider.class.php:362
+msgid "Do you want to set skin settings for the slider?"
+msgstr "Möchten Sie die Skin-Einstellungen für den Slider festlegen?"
+
+#: ../lib/lenslider.class.php:362
+msgid "Slider #{%torep%} errors:"
+msgstr "Sliderfehler #{%torep%}:"
+
+#: ../lib/lenslider.class.php:362
+msgid "Banner {%torep%} errors:"
+msgstr "Bannerfehler {%torep%}:"
+
+#: ../lib/lenslider.class.php:444
+msgid "No sliders available"
+msgstr "Keine Slider verfügbar"
+
+#: ../lib/lenslider.class.php:453 ../lib/lenslider.class.php:465
+#: ../lib/lenslider.class.php:469
+msgid "Select..."
+msgstr "Auswählen..."
+
+#: ../lib/lenslider.class.php:1216
+msgid "Url"
+msgstr "Url"
+
+#: ../lib/lenslider.class.php:1217
+msgid "Post"
+msgstr "Artikel"
+
+#: ../lib/lenslider.class.php:1218
+msgid "Page"
+msgstr "Seite"
+
+#: ../lib/lenslider.class.php:1219
+msgid "Category"
+msgstr "Kategorie"
+
+#: ../lib/lenslider.class.php:1462
+#, php-format
+msgid "Banner %d expand / collapse"
+msgstr "Banner %d ein-/ausblenden"
+
+#: ../lib/lenslider.class.php:1463
+#, php-format
+msgid "Delete banner %d of Slider %s"
+msgstr "Entferne Banner %d von Slider %s"
+
+#: ../lib/lenslider.class.php:1466
+#, php-format
+msgid "Banner %d"
+msgstr "Banner %d"
+
+#: ../lib/lenslider.class.php:1471
+#, php-format
+msgid "Banner %d image"
+msgstr "Banner %d Bild"
+
+#: ../lib/lenslider.class.php:1479
+msgid "Delete image"
+msgstr "Entferne Bild"
+
+#: ../lib/lenslider.class.php:1494
+#, php-format
+msgid "Banner %d thumbnail"
+msgstr "Banner %d Vorschaubild"
+
+#: ../lib/lenslider.class.php:1502
+msgid "Delete thumbnail"
+msgstr "Entferne Vorschaubild"
+
+#: ../lib/lenslider.class.php:1547
+#, php-format
+msgid "Slider <u>%s</u>"
+msgstr "Slider <u>%s</u>"
+
+#: ../lib/lenslider.class.php:1550
+msgid "Banners"
+msgstr "Banner"
+
+#: ../lib/lenslider.class.php:1557
+msgid "Full delete Slider"
+msgstr "Kompletten Slider entfernen"
+
+#: ../lib/lenslider.class.php:1558
+#, php-format
+msgid "Expand / Collapse Slider %s banners"
+msgstr "Banner von Slider %s ein-/ausklappen"
+
+#: ../lib/lenslider.class.php:1560
+msgid "Remove Slider form"
+msgstr "Entferne Slider"
+
+#: ../lib/lenslider.class.php:1570
+msgid "Slider skin"
+msgstr "Slider Skin"
+
+#: ../lib/lenslider.class.php:1573
+msgid "Enable"
+msgstr "Aktivieren"
+
+#: ../lib/lenslider.class.php:1575
+msgid "Disable"
+msgstr "Deaktivieren"
+
+#: ../lib/lenslider.class.php:1588
+msgid "Random"
+msgstr "Zufall"
+
+#: ../lib/lenslider.class.php:1592
+msgid "Quick info"
+msgstr "Kurzinfo"
+
+#: ../lib/lenslider.class.php:1593
+#, php-format
+msgid "Slider #%s preview"
+msgstr "Vorschau von Slider #%s"
+
+#: ../lib/lenslider.class.php:1593
+msgid "Preview"
+msgstr "Vorschau"
+
+#: ../lib/lenslider.class.php:1606
+#, php-format
+msgid "Slider %s settings"
+msgstr "Einstellungen zu Slider %s"
+
+#: ../lib/lenslider.class.php:1610
+msgid "Get global settings"
+msgstr "Globale Einstellungen verwenden"
+
+#: ../lib/lenslider.class.php:1611
+msgid "Return local settings"
+msgstr "Lokale Einstellungen verwenden"
+
+#: ../lib/lenslider.class.php:1612
+msgid "Set skin settings"
+msgstr "Skin Einstellungen festlegen"
+
+#: ../lib/lenslider.class.php:1621
+#, php-format
+msgid "Add new banner for Slider %s"
+msgstr "Neuen Banner für Slider %s hinzufügen"
+
+#: ../lib/lenslider.class.php:1641
+#, php-format
+msgid "Slider <u>#%s</u>"
+msgstr "Slider <u>%s</u>"
+
+#: ../lib/lenslider.skins.class.php:140
+msgid "Skin files location:"
+msgstr "Skin Speicherpfad:"
+
+#: ../lib/lenslider.skins.class.php:141
+msgid "Date:"
+msgstr "Datum:"
+
+#: ../lib/lenslider.skins.class.php:141
+msgid "Author:"
+msgstr "Autor:"
+
+#: ../lib/lenslider.skins.class.php:141
+msgid "Version:"
+msgstr "Version:"
+
+#: ../lib/lenslider.skins.class.php:141
+msgid "url:"
+msgstr "Url:"
+
+#: ../lib/lenslider.skins.class.php:144
+msgid "view"
+msgstr "ansehen"
+
+#: ../lib/lenslider.skins.class.php:145
+msgid "You couldn't delete uses skin!"
+msgstr "Verwendete Skins können nicht gelöscht werden!"
+
+#: ../lib/lenslider.skins.class.php:145
+msgid "Delete"
+msgstr "Entfernen"
+
+#: ../skins/smart_energy/lib/smart_energy.skin.class.php:12
+msgid "Title near thumb"
+msgstr "Titel zum Vorschaubild"
+
+#: ../skins/smart_energy/lib/smart_energy.skin.class.php:18
+msgid "Text near thumb"
+msgstr "Text zum Vorschaubild"
+
+#~ msgid "FAQ"
+#~ msgstr "ЧаВО"
+
+#~ msgid "Support"
+#~ msgstr "Поддержка"
+
+#~ msgid "Ways to insert slider #<em>%s</em> code to your site"
+#~ msgstr "Способы вставить код Слайдера #<em>%s</em> в ваш сайт"
+
+#~ msgid "Shortcode in content area of post/page"
+#~ msgstr "ШортКод в области редактирования поста/страницы"
+
+#~ msgid "PHP code in php files of your theme"
+#~ msgstr "PHP код для ваших php-файдов вашей темы"
+
+#~ msgid "or:"
+#~ msgstr "или:"
+
+#~ msgid "Slider #<em>%s</em> settings"
+#~ msgstr "Параметры Слайдера #<em>%s</em>"
+
+#~ msgid "Full delete Slider %s with banners"
+#~ msgstr "Полное удаление Слайдера %s с его баннерами"
+
+#~ msgid "Remove Slider %s form"
+#~ msgstr "Убрать форму Слайдера %s"
+
+#~ msgid "About LenSlider plugin:"
+#~ msgstr "О плагине LenSlider:"
+
+#~ msgid "About this plugin:"
+#~ msgstr "Об этом плагине:"
+
+#~ msgid "Skin for the slider %s"
+#~ msgstr "Скин (шаблон) для Слайдера %s"
+
+#~ msgid "Post url"
+#~ msgstr "Ссылка на запись"
+
+#~ msgid "Post title"
+#~ msgstr "Заголовок записи"
+
+#~ msgid "Post excerpt"
+#~ msgstr "Выдержка из записи"
+
+#~ msgid "Post content"
+#~ msgstr "Содержание записи"
+
+#~ msgid "Post author"
+#~ msgstr "Автор записи"
+
+#~ msgid "Post date"
+#~ msgstr "Дата записи"
+
+#~ msgid "Post comments"
+#~ msgstr "Комментарии к записи"
+
+#~ msgid "Post custom fields"
+#~ msgstr "Альтернативные поля записи"
+
+#, fuzzy
+#~ msgid "Add to LenSlider"
+#~ msgstr "Добавить новую форму слайдера"
+
+#~ msgid "Add"
+#~ msgstr "Добавить"
+
+#~ msgid "Delete post banner for slider #%s"
+#~ msgstr "Удалить баннер записи Слайдера #%s"
+
+#~ msgid "Set individual settings for <strong>Slider %s</strong>"
+#~ msgstr "Задать индивидуальные параметры для <strong>Слайдера %s</strong>"
+
+#~ msgid "Slider %s thumbnail settings"
+#~ msgstr "Параметры миниатюр Слайдера %s"
+
+#~ msgid "Sliders navigation list"
+#~ msgstr "Навигация по списку слайдеров"
+
+#~ msgid "Upload your image"
+#~ msgstr "Загрузите ваше изображение"
+
+#~ msgid "Mediafiles manager"
+#~ msgstr "Менеджер медиафайлов"
+
+#~ msgid "Banner %1s %2s"
+#~ msgstr "Баннер %1s %2s"

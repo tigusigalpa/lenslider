@@ -40,7 +40,7 @@ Slider.prototype.transition = function( coords ) {
         800,
         function() {
 
-            $(this).css('margin-left', -(self.blockWidth * (self.blocksLen - 2) ));
+            jQuery(this).css('margin-left', -(self.blockWidth * (self.blocksLen - 2) ));
         });
 
         this.current = this.blocksLen - 2;        
@@ -77,15 +77,15 @@ function auto( obj, time, hover ) {
     }
 }
 
-jQuery(document).ready(function() {
+var dares_serpent_lenslider_fn = function(inparr) {
     var slider = new Slider( jQuery('.ls_dar_ser_ibanner') );
     jQuery('.ls_dar_ser_ibanner').find('.ls_dar_ser_ibanner_nav').on('click', function() {
         slider.setCurrent( jQuery(this).hasClass('right') );
         slider.transition();
     });
-    auto( slider, 5000, false );
+    auto( slider, inparr.slideshow.ls_autoplay_delay, false );
     jQuery('.ls_dar_ser_ibanner').hover(
-        function() { auto( slider, 5000, true ); },
-        function() { auto( slider, 5000, false ); }
+        function() { auto( slider, inparr.slideshow.ls_autoplay_delay, true ); },
+        function() { auto( slider, inparr.slideshow.ls_autoplay_delay, false ); }
     );
-});
+}
