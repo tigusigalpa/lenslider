@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: slider, carousel, slideshow, banners, image slider, image slider plugin, javascript rotator, javascript slider, jquery rotator, photo rotator, Photo Slider, picture slider, rotator, shortcode, slider plugin, slideshow plugin, slider shortcode, carousel plugin, thumbnails, css3, css
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,6 +129,21 @@ If you switch on this option hints in the admin LenSlider will be shown in nice 
 5. Sliders admin manager. `Default` skin
 
 == Changelog ==
+
+Full list of changes you can see at [LenSlider roadmap page](http://www.lenslider.com/roadmap/)
+
+= 2.0.1 =
+- Fix for settings page
+- Fix for checking key in settings array
+
+= 2.0 =
+- New well UI design
+- WordPress-standart list table for Slider list & dedicated page for every slider
+- YouTube & Vimeo Support
+- Media Uploader Support (New for 3.5+ version and old via Thickbox)
+- Autorotate & autorotate delay managed in admin
+- Margins manager
+- Enable/disable for every banner
 
 = 1.2 =
 - js call admin fuction fix

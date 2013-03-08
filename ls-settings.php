@@ -11,14 +11,9 @@ function lenslider_settins_page() {
                         array(/*MAX limits default*/
                             LenSlider::$slidersLimitName => LenSlider::$slidersLimitDefault,
                             LenSlider::$bannersLimitName => LenSlider::$bannersLimitDefault,
-                            LenSlider::$maxWidthName     => $ls_settings->imageWidthMAX,
-                            LenSlider::$qualityName      => $ls_settings->imageQualityMAX,
                             LenSlider::$maxSizeName      => $ls_settings->imageFileSizeMAX
                         ),
-                        array(/*MIN limits default*/
-                            LenSlider::$maxWidthName     => $ls_settings->imageWidthMIN,
-                            LenSlider::$qualityName      => $ls_settings->imageQualityMIN
-                        ),
+                        array(/*MIN limits default*/),
                         array('ls_update_settings')/*to unset*/
                 )
             );

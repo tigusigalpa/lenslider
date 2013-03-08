@@ -44,9 +44,6 @@ function lenslider_slider_page() {
             <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
         </div-->
         
-        <?php
-        //$ww = getimagesize('/home/lmsservi/public_html/poverlsn5/wp-content/plugins/len-slider/images/youtube-lenslider.jpg');die(var_dump($ww));
-        //$ee = $ls->lenslider_simple_insert_attachment('youtube-lenslider.jpg');die(var_dump($ee));?>
         <a href="<?php echo admin_url("admin.php?page=".LenSlider::$indexPage);?>" style="text-decoration:none">&larr; <?php _e( 'Back to LenSlider sliders list', 'lenslider');?></a>
         <h2 class="ls_h2">
             <?php echo $title;?>
@@ -64,7 +61,7 @@ function lenslider_slider_page() {
                         <div id="titlediv">
                             <div id="titlewrap">
                                 <label for="title" style="cursor: pointer"><?php printf( __( 'Slider #%s title', 'lenslider' ), $slidernum );?></label>
-                                <input type="text" name="slset[<?php echo $slidernum;?>][<?php echo LenSlider::$sliderComment;?>]" size="30" value="<?php echo $settings_array[LenSlider::$sliderComment];?>" id="title" autocomplete="off" />
+                                <input type="text" name="slset[<?php echo $slidernum;?>][<?php echo LenSlider::$sliderComment;?>]" size="30" value="<?php echo (array_key_exists(LenSlider::$sliderComment, $settings_array) && !empty($settings_array[LenSlider::$sliderComment]))?$settings_array[LenSlider::$sliderComment]:"";?>" id="title" autocomplete="off" />
                             </div>
                         </div><!-- /titlediv -->
                         <ul id="slidernum_<?php echo $slidernum;?>" class="ls-sortable meta-box-sortables">
@@ -127,8 +124,8 @@ function lenslider_slider_page() {
                                         </div>
                                         <div class="misc-pub-section">
                                             <select class="ls_switch" name="slset[<?php echo $slidernum;?>][<?php echo LenSlider::$sliderDisenName;?>]">
-                                                <option value="1"<?php selected($settings_array[LenSlider::$sliderDisenName], 1);?>><?php _e('Enabled', 'lenslider');?></option>
-                                                <option value="0"<?php selected($settings_array[LenSlider::$sliderDisenName], 0);?>><?php _e('Disabled', 'lenslider');?></option>
+                                                <option value="1"<?php (array_key_exists(LenSlider::$sliderDisenName, $settings_array) && !empty($settings_array[LenSlider::$sliderDisenName]))?selected($settings_array[LenSlider::$sliderDisenName], 1):"";?>><?php _e('Enabled', 'lenslider');?></option>
+                                                <option value="0"<?php (array_key_exists(LenSlider::$sliderDisenName, $settings_array) && !empty($settings_array[LenSlider::$sliderDisenName]))?selected($settings_array[LenSlider::$sliderDisenName], 0):"";?>><?php _e('Disabled', 'lenslider');?></option>
                                             </select>
                                         </div>
                                         <div class="misc-pub-section" style="background:#c5ffb8">

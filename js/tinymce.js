@@ -32,7 +32,7 @@
                 author    : 'Igor Sazonov',
                 authorurl : 'http://www.lenslider.com/',
                 infourl   : 'http://www.lenslider.com/',
-                version   : '2.0'
+                version   : '2.0.1'
             };
         }
     });

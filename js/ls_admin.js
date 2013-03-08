@@ -176,7 +176,7 @@
                                                         $height_val     = (!isNaN($height_val))?$height_val:'';
                                                         jQuery("#ls-bimg-width-"+$n).removeAttr('id').removeAttr('name').attr('disabled','disabled').next(".ls_hidden").attr({name:$width_name,id:'ls-bimg-width-'+$n}).val($width_val);
                                                         jQuery("#ls-bimg-height-"+$n).removeAttr('id').removeAttr('name').attr('disabled','disabled').next(".ls_hidden").attr({name:$height_name,id:'ls-bimg-height-'+$n}).val($height_val);
-                                                    } else console.dir('dddd');
+                                                    }
                                                 }, "json"
                                             );
                                             break;
