@@ -8,7 +8,7 @@ function lenslider_slider_page() {
         if(wp_verify_nonce($_REQUEST['lenslider_slider_nonce'], $ls->plugin_basename.AUTH_KEY.$site_url) && check_admin_referer($ls->plugin_basename.AUTH_KEY.$site_url, 'lenslider_slider_nonce')) {
             do_action('lenslider_banners_processing', $slidernum, $_POST["bannerhidden"], $_POST['ls_image_mu'], $_POST['ls_image_thumb_mu'], $_POST["binfo"], $_POST["slset"]);
         } else {
-            wp_die( __('WordPress nonce not validate!', 'lenslider') );
+            wp_die(__('WordPress nonce not validate!', 'lenslider'));
             return;
         }
     }
@@ -22,7 +22,7 @@ function lenslider_slider_page() {
         $title          = sprintf(__('Edit Slider #%s', 'len-sliders'), $slidernum);
         $new_slider     = false;
         $skins_disabled = false;
-        $settings_array = LenSlider::lenslider_get_slider_settings($slidernum);
+        $settings_array = LenSlider::lenslider_get_slider_settings($slidernum);//die(var_dump($settings_array));
         if(empty($settings_array[LenSlider::$sliderDisenName])) $title .= "&nbsp;&nbsp;<span style=\"color:red\">(".__('Disabled', 'lenslider').")</span>";
         $skin_check     = $settings_array[LenSlider::$skinName];
     }
@@ -31,6 +31,7 @@ function lenslider_slider_page() {
         $new_slider     = true;
         $skins_disabled = true;
         $settings_array = $ls->ls_settings;
+        if(empty($settings_array)) $settings_array = LenSlider::lenslider_get_default_settings();
         $skin_check     = $skin_name;
     }
     else {
@@ -44,11 +45,11 @@ function lenslider_slider_page() {
             <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
         </div-->
         
-        <a href="<?php echo admin_url("admin.php?page=".LenSlider::$indexPage);?>" style="text-decoration:none">&larr; <?php _e( 'Back to LenSlider sliders list', 'lenslider');?></a>
+        <a href="<?php echo admin_url("admin.php?page=".LenSlider::$indexPage);?>" style="text-decoration:none">&larr; <?php _e('Back to LenSlider sliders list', 'lenslider');?></a>
         <h2 class="ls_h2">
             <?php echo $title;?>
             <?php if(!$new_slider) :?>
-            <a href="<?php echo admin_url("admin.php?page=".LenSlider::$sliderPage."&slidernum=".LenSlider::lenslider_hash()."&lsnew=true");?>" class="add-new-h2 add_new_slider"><?php _e('Add New');?></a>
+            <a href="<?php echo admin_url("admin.php?page=".LenSlider::$sliderPage."&slidernum=".LenSlider::lenslider_hash()."&lsnew=true");?>" id="<?php echo LenSlider::lenslider_hash();?>" class="add-new-h2 add_new_slider"><?php _e('Add New');?></a>
             <?php endif;?>
         </h2>
         <?php if(!$empty) :?>
@@ -124,8 +125,8 @@ function lenslider_slider_page() {
                                         </div>
                                         <div class="misc-pub-section">
                                             <select class="ls_switch" name="slset[<?php echo $slidernum;?>][<?php echo LenSlider::$sliderDisenName;?>]">
-                                                <option value="1"<?php (array_key_exists(LenSlider::$sliderDisenName, $settings_array) && !empty($settings_array[LenSlider::$sliderDisenName]))?selected($settings_array[LenSlider::$sliderDisenName], 1):"";?>><?php _e('Enabled', 'lenslider');?></option>
-                                                <option value="0"<?php (array_key_exists(LenSlider::$sliderDisenName, $settings_array) && !empty($settings_array[LenSlider::$sliderDisenName]))?selected($settings_array[LenSlider::$sliderDisenName], 0):"";?>><?php _e('Disabled', 'lenslider');?></option>
+                                                <option value="1" <?php (array_key_exists(LenSlider::$sliderDisenName, $settings_array) && !empty($settings_array[LenSlider::$sliderDisenName]))?selected($settings_array[LenSlider::$sliderDisenName], 1):"";?>><?php _e('Enabled', 'lenslider');?></option>
+                                                <option value="0" <?php (array_key_exists(LenSlider::$sliderDisenName, $settings_array))?selected($settings_array[LenSlider::$sliderDisenName], 0):"";?>><?php _e('Disabled', 'lenslider');?></option>
                                             </select>
                                         </div>
                                         <div class="misc-pub-section" style="background:#c5ffb8">
@@ -204,7 +205,7 @@ function lenslider_slider_page() {
             </div>
         </form>
         <?php else:?>
-            <?php echo LenSliderSkins::lenslider_skins_dropdown("new_slider_skin");?>
+            <?php echo LenSliderSkins::lenslider_skins_dropdown("new_slider_skin", false, "new_slider_skin");?>
             <br /><br /><a class="button button-hero add_new_slider" id="<?php echo LenSlider::lenslider_hash();?>" href="<?php echo admin_url("admin.php?page=".LenSlider::$sliderPage."&lsnew=true");?>"><?php _e('Select', 'lenslider');?></a>
         <?php endif;?>
     </div>

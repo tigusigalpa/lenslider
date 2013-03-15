@@ -49,6 +49,13 @@
                     return false;
                 });
             }
+            jQuery(".add_new_slider").click(function() {
+                var $skin_name = jQuery("#new_slider_skin option:selected").val(),
+                $id            = jQuery(this).attr('id'),
+                $href          = jQuery(this).attr('href');
+                if($id) $href  = $href+"&slidernum="+$id;
+                jQuery(this).attr('href', $href+"&skin="+$skin_name);
+            });
             if(jQuery(".ls_del_sys_umeta").length) {
                 jQuery(".ls_del_sys_umeta").click(function() {
                     jQuery.post(ajaxurl,
@@ -62,7 +69,7 @@
             
             if(jQuery(".ls_media_upload").length) {
                 //old WP
-                if(inparr.wp_version < 3.5) {
+                if(inparr.wp_version_new < 1) {
                     jQuery(document).on('click', '.ls_media_upload', function() {
                         window.old_wp_33_this = jQuery(this);
                         var $sn    = window.old_wp_33_this.attr('id').replace(/ls_media_upload_/, '').split('_');
@@ -120,23 +127,22 @@
                     });
                 }
                 //new WP
-                if(inparr.wp_version >= 3.5) {
+                if(inparr.wp_version_new == 1) {
                     var custom_file_frame;
-                    jQuery(document).on('click', '.ls_media_upload', function() {
+                    jQuery(document).on('click', '.ls_media_upload', function(event) {
                         var $this = jQuery(this),
                         $sn        = $this.attr('id').replace(/ls_media_upload_/, '').split('_'),
                         $slidernum = $sn[0],
-                        $n         = $sn[1],
+                        $n         = parseInt($sn[1]),
                         $width     = parseInt(jQuery("#ls-bimg-width-"+$n).val()),
                         $height    = parseInt(jQuery("#ls-bimg-height-"+$n).val()),
                         $prior     = jQuery("#imageprior_"+$n).val(),
                         $type      = jQuery("#bannertype_"+$n).val(),
                         $title     = jQuery("#ls-bimg-title-"+$n).val(),
-                        $exist_id  = $sn[2];
+                        $exist_id  = parseInt($sn[2]);
                         event.preventDefault();
                         if (typeof(custom_file_frame)!=="undefined") {
-                            custom_file_frame.open();
-                            return;
+                            custom_file_frame.close();
                         }
                         
                         if(($prior == 'width' && $width > 0) || ($prior == 'height' && $height > 0)) {
@@ -193,8 +199,8 @@
                     var $this = jQuery(this),
                     $split = $this.attr('id').replace(/ls_textonly_/, '').split("_"),
                     $slidernum = $split[0],
-                    $n         = $split[1],
-                    $att_id    = $split[2],
+                    $n         = parseInt($split[1]),
+                    $exist_id  = parseInt($split[2]),
                     $type      = jQuery("#bannertype_"+$n).val();
                     jQuery(".ls_media_abs_"+$slidernum+"_"+$n).show();
                     if(!$this.hasClass('act')) {
@@ -215,16 +221,16 @@
                     } else {
                         setTimeout(function () {
                             jQuery.post(ajaxurl,
-                                {type:$type,slidernum:$slidernum,insert:0,att_id:$att_id,sec:inparr.ajaxNonce,action:'ls_ajax_new_media'},
+                                {type:$type,slidernum:$slidernum,insert:0,exist_id:$exist_id,sec:inparr.ajaxNonce,action:'ls_ajax_new_media'},
                                 function(data) {
                                     jQuery(".ls_media_abs_"+$slidernum+"_"+$n).hide();
-                                    if(data.res) {
+                                    //if(data.res) {
                                         jQuery(".limman_"+$n+" a").removeClass('lmdis');
                                         $this.removeClass('act');
                                         jQuery("#ls_image_mu_"+$slidernum+"_"+$n).val('');
                                         $this.attr({id:'ls_textonly_'+$slidernum+'_'+$n+'_0'});
                                         jQuery("#ls_image_mu_"+$slidernum+"_"+$n).val('');
-                                    }
+                                    //}
                                 }, "json"
                             );
                         }, 300);
@@ -303,13 +309,15 @@
                             $slidernum    = $arr[0],
                             $n            = $arr[1],
                             $att_id       = $arr[2],
-                            $att_thumb_id = jQuery("#ls_image_thumb_mu_"+$slidernum+"_"+$n).val(),
                             $type         = jQuery("#bannertype_"+$n).val(),
                             $width_name   = '',
                             $width_val    = '',
                             $height_name  = '',
                             $height_val   = '',
                             $url_name     = '';
+                            if(jQuery("#ls_image_thumb_mu_"+$slidernum+"_"+$n).length) {
+                                var $att_thumb_id = jQuery("#ls_image_thumb_mu_"+$slidernum+"_"+$n).val();
+                            }
                             jQuery(".ls_media_abs_"+$slidernum+"_"+$n).show();
                             setTimeout(function () {
                                 jQuery.post(ajaxurl,
@@ -397,7 +405,7 @@
             
             if(jQuery(".ls_media_thumb_upload").length) {
                 //old WP
-                if(inparr.wp_version < 3.5) {
+                if(inparr.wp_version_new < 1) {
                     jQuery(document).on('click', '.ls_media_thumb_upload', function() {
                         window.old_wp_33_this = jQuery(this);
                         var $sn    = window.old_wp_33_this.attr('id').replace(/ls_media_upload_/, '').split('_');
@@ -455,7 +463,7 @@
                     }
                 }
                 //new WP
-                if(inparr.wp_version >= 3.5) {
+                if(inparr.wp_version_new == 1) {
                     var custom_thumb_file_frame;
                     jQuery(document).on('click', '.ls_media_thumb_upload', function() {
                         var $this = jQuery(this),
@@ -561,7 +569,7 @@
                 jQuery.post(ajaxurl,
                     {action:'ls_welcome_panel',ls_welcomepanelnonce:jQuery('#ls_welcomepanelnonce').val()},
                     function(data) {
-                        if(data == 1) jQuery("#ls-welcome-panel").hide();
+                        if(data == 1 || data == '-1') jQuery("#ls-welcome-panel").hide();
                     }
                 );
                 return false;
@@ -600,14 +608,6 @@
                     jQuery("#ls_autoplay_delay_"+$slidernum).spinner("destroy");
                 }
             }
-        });
-        
-        jQuery(".add_new_slider").click(function() {
-            var $skin_name = jQuery("select[name=new_slider_skin] option:selected").val(),
-            $id            = jQuery(this).attr('id'),
-            $href          = jQuery(this).attr('href');
-            if($id) $href  = $href+"&slidernum="+$id;
-            jQuery(this).attr('href', $href+"&skin="+$skin_name);
         });
 
         jQuery(".ls_banner_close").hover(
@@ -834,7 +834,8 @@
                 function(data) {
                     if(count_enabled < data.banners_limit && data.banner_item != false) {
                         if(removeEl) removeEl.removeClass("bload");
-                        jQuery('#slidernum_'+slidernum).append(jQuery(data.banner_item).fadeIn('slow'));
+                        //jQuery('#slidernum_'+slidernum).append(jQuery(data.banner_item).show('slow'));
+                        jQuery('#slidernum_'+slidernum).append(data.banner_item);
                         var $tars = jQuery(data.banner_item).find('textarea:not(.ls_nmce)');
                         if($tars.length) {
                             $tars.each(function() {

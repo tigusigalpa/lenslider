@@ -4,7 +4,7 @@ Plugin Name: LenSlider
 Plugin URI: http://www.lenslider.com/
 Description: This plugin allows you easy to generate multiple visual sliders as well as easy to integrate them into any place of your site via slider php-code or shortcode (plugin timyMCE button). A lot of plugin slider skins will help you to visualize your slider.
 Author: Igor Sazonov
-Version: 2.0.1
+Version: 2.0.9
 Author URI: http://www.lenslider.com/about-author/
 License: GPLv2
 
@@ -24,14 +24,14 @@ Copyright 2013  Igor Sazonov  (email : sovletig@yandex.ru)
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-include_once(dirname(__FILE__).'/lib/lenslider.class.php');
-include_once(dirname(__FILE__).'/lib/lenslider.settings.class.php');
-include_once(dirname(__FILE__).'/lib/lenslider.skins.class.php');
-include_once(dirname(__FILE__).'/lib/lenslider.table.class.php');
-include_once(dirname(__FILE__).'/lib/lenslider.widget.class.php');
-include_once(dirname(__FILE__).'/ls-settings.php');
-include_once(dirname(__FILE__).'/ls-skins.php');
-include_once(dirname(__FILE__).'/ls-slider.php');
+include_once(plugin_dir_path(__FILE__).'/lib/lenslider.class.php');
+include_once(plugin_dir_path(__FILE__).'/lib/lenslider.settings.class.php');
+include_once(plugin_dir_path(__FILE__).'/lib/lenslider.skins.class.php');
+include_once(plugin_dir_path(__FILE__).'/lib/lenslider.table.class.php');
+include_once(plugin_dir_path(__FILE__).'/lib/lenslider.widget.class.php');
+include_once(plugin_dir_path(__FILE__).'/ls-settings.php');
+include_once(plugin_dir_path(__FILE__).'/ls-skins.php');
+include_once(plugin_dir_path(__FILE__).'/ls-slider.php');
 
 $ls          = new LenSlider();
 function lenslider_index_gallery() {
@@ -67,9 +67,9 @@ function lenslider_index_gallery() {
     ?>
     <div class="wrap columns-2">
         <h2 class="ls_h2 ls_floatleft">LenSlider v<?php echo LenSliderSkins::$version?>: <?php _e('Sliders list', 'lenslider');?>
-            <a href="<?php echo admin_url("admin.php?page=".LenSlider::$sliderPage."&slidernum=".LenSlider::lenslider_hash()."&lsnew=true");?>" class="add-new-h2 add_new_slider"><?php _e('Add New');?></a>
+            <a href="<?php echo admin_url("admin.php?page=".LenSlider::$sliderPage."&lsnew=true");?>" id="<?php echo LenSlider::lenslider_hash();?>" class="add-new-h2 add_new_slider"><?php _e('Add New');?></a>
         </h2>
-        <div class="ls_floatleft" style="margin:10px 8px 0 0"><?php echo LenSliderSkins::lenslider_skins_dropdown("new_slider_skin");?></div>
+        <div class="ls_floatleft" style="margin:10px 8px 0 0"><?php echo LenSliderSkins::lenslider_skins_dropdown("new_slider_skin", false, "new_slider_skin");?></div>
         <div class="ls_floatleft" style="margin-top:14px">&larr; <?php _e( 'Select a skin', 'lenslider' );?></div>
         <div class="clear"></div>
         

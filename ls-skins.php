@@ -15,7 +15,7 @@ function lenslider_skins_page() {
         if(wp_verify_nonce($_REQUEST['lenslider_skins_nonce'], $ls_skins->plugin_basename.$site_url.AUTH_SALT) && check_admin_referer($ls_skins->plugin_basename.$site_url.AUTH_SALT, 'lenslider_skins_nonce')) {
             $ls_skins->lenslider_unzip_skin($_FILES['skin_file_zip']);
         } else {
-            wp_die( __('WordPress nonce not validate!', 'lenslider') );
+            wp_die(__('WordPress nonce not validate!', 'lenslider'));
             return;
         }
     }
